@@ -25,15 +25,15 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-black/30 pointer-events-none" />
       </div>
 
-      <div className="relative z-10 min-h-screen pt-16">
+      <div className="relative z-10 min-h-screen pt-20 sm:pt-24">
         {/* Header */}
-        <section className="border-b border-white/[0.1] py-12 sm:py-16">
+        <section className="border-b border-white/[0.1] py-8 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white">
+              <h1 className="mb-3 sm:mb-4 text-2xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white">
                 Let&apos;s Build Your Pipeline
               </h1>
-              <p className="text-base sm:text-lg text-white/70 max-w-xl mx-auto">
+              <p className="text-sm sm:text-lg text-white/70 max-w-xl mx-auto">
                 Tell us about your leads. Within 48 hours, you&apos;ll have a custom automation plan—free, no strings attached.
               </p>
             </div>
