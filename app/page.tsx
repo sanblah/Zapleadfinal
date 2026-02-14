@@ -45,13 +45,13 @@ export default function HomePage() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
           {/* Content */}
-          <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-32 text-center overflow-visible">
+          <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-32 text-center overflow-visible">
             <AnimatedContent delay={0} duration={0.8}>
               <Badge
                 variant="outline"
-                className="mb-8 glass-badge text-white px-6 py-2.5 text-sm font-medium"
+                className="mb-6 sm:mb-8 glass-badge text-white px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium"
               >
-                <Sparkles className="h-4 w-4 mr-2 text-yellow-400 animate-pulse" />
+                <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 sm:mr-2 text-yellow-400 animate-pulse" />
                 Lead Response in 5 Seconds, Not 5 Hours
               </Badge>
             </AnimatedContent>
@@ -83,7 +83,7 @@ export default function HomePage() {
                 <Link href="/contact">
                   <Button
                     size="lg"
-                    className="bg-white text-black hover:bg-white/90 hover:scale-105 px-8 sm:px-10 py-5 sm:py-6 text-lg sm:text-xl shadow-2xl rounded-full transition-all duration-300 w-full sm:w-auto"
+                    className="bg-white text-black hover:bg-white/90 hover:scale-105 px-6 sm:px-10 py-4 sm:py-6 text-base sm:text-xl shadow-2xl rounded-full transition-all duration-300 w-full sm:w-auto"
                   >
                     See It Work on Your Leads
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -93,7 +93,7 @@ export default function HomePage() {
                   <Button
                     variant="glass"
                     size="lg"
-                    className="text-white px-8 sm:px-10 py-5 sm:py-6 text-lg sm:text-xl rounded-full w-full sm:w-auto"
+                    className="text-white px-6 sm:px-10 py-4 sm:py-6 text-base sm:text-xl rounded-full w-full sm:w-auto"
                   >
                     Read 2 min demo
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -108,8 +108,8 @@ export default function HomePage() {
         <section className="py-16 sm:py-24 relative">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
-              <div className="mb-16 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+              <div className="mb-10 sm:mb-16 text-center">
+                <h2 className="mb-3 sm:mb-4 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white">
                   <DecryptedText
                     text="Every Hour, You're Losing ₹12,500"
                     animateOn="view"
@@ -120,7 +120,7 @@ export default function HomePage() {
                     encryptedClassName="text-white/40"
                   />
                 </h2>
-                <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                <p className="text-sm sm:text-lg text-white/70 max-w-2xl mx-auto">
                   65% of your leads go cold before your team replies. That&apos;s not a sales problem—it&apos;s a speed problem.
                 </p>
               </div>
@@ -139,12 +139,12 @@ export default function HomePage() {
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
             <ScrollBlurReveal>
-              <div className="mb-16 text-center">
-                <Badge variant="outline" className="mb-6 glass-badge text-blue-300 border-blue-500/30 px-4 py-1.5">
+              <div className="mb-10 sm:mb-16 text-center">
+                <Badge variant="outline" className="mb-4 sm:mb-6 glass-badge text-blue-300 border-blue-500/30 px-4 py-1.5">
                   <Sparkles className="h-3 w-3 mr-2 animate-pulse" />
                   Live Interactive Demo
                 </Badge>
-                <h2 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl text-white">
+                <h2 className="mb-4 sm:mb-6 text-2xl sm:text-4xl font-bold tracking-tight md:text-5xl text-white">
                   <DecryptedText
                     text="Chat With Our AI Right Now"
                     animateOn="view"
@@ -155,7 +155,7 @@ export default function HomePage() {
                     encryptedClassName="text-white/40"
                   />
                 </h2>
-                <p className="text-xl text-white/70 max-w-2xl mx-auto">
+                <p className="text-base sm:text-xl text-white/70 max-w-2xl mx-auto">
                   This is the same AI your leads would talk to. <span className="text-blue-400 font-semibold">Ask anything</span>—pricing, availability, objections. Time the response.
                 </p>
               </div>
@@ -174,9 +174,9 @@ export default function HomePage() {
         <section className="py-16 sm:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
-              <div className="mb-20 text-center">
+              <div className="mb-12 sm:mb-20 text-center">
                 <AnimatedContent delay={0} duration={0.8}>
-                  <h2 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
+                  <h2 className="mb-4 sm:mb-6 text-2xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-white">
                     <DecryptedText
                       text="From Lead to Meeting in 3 Steps"
                       animateOn="view"
@@ -189,7 +189,7 @@ export default function HomePage() {
                   </h2>
                 </AnimatedContent>
                 <AnimatedContent delay={0.2} duration={0.8}>
-                  <p className="text-xl sm:text-2xl text-white/70 font-light">
+                  <p className="text-base sm:text-xl md:text-2xl text-white/70 font-light">
                     We build, deploy, and optimize—you just close deals.
                   </p>
                 </AnimatedContent>
@@ -201,10 +201,10 @@ export default function HomePage() {
                 <AnimatedContent delay={0} duration={0.8} distance={50}>
                   <Card className="glass-card-enhanced liquid-shine h-full group transform-gpu">
                     <CardHeader className="pb-4">
-                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-400 to-purple-500 text-white shadow-[0_8px_24px_0_rgba(79,70,229,0.4)] group-hover:scale-110 group-hover:shadow-[0_12px_32px_0_rgba(79,70,229,0.5)] transition-all duration-300">
+                      <div className="mb-3 sm:mb-4 flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-400 to-purple-500 text-white shadow-[0_8px_24px_0_rgba(79,70,229,0.4)] group-hover:scale-110 group-hover:shadow-[0_12px_32px_0_rgba(79,70,229,0.5)] transition-all duration-300">
                         <span className="text-2xl font-bold">1</span>
                       </div>
-                      <CardTitle className="text-white text-2xl font-bold">1. We Audit Your Pipeline</CardTitle>
+                      <CardTitle className="text-white text-lg sm:text-2xl font-bold">1. We Audit Your Pipeline</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-base text-white/80 leading-relaxed">
@@ -217,10 +217,10 @@ export default function HomePage() {
                 <AnimatedContent delay={0.2} duration={0.8} distance={50}>
                   <Card className="glass-card-enhanced liquid-shine h-full group transform-gpu">
                     <CardHeader className="pb-4">
-                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-400 to-pink-500 text-white shadow-[0_8px_24px_0_rgba(124,58,237,0.4)] group-hover:scale-110 group-hover:shadow-[0_12px_32px_0_rgba(124,58,237,0.5)] transition-all duration-300">
+                      <div className="mb-3 sm:mb-4 flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-400 to-pink-500 text-white shadow-[0_8px_24px_0_rgba(124,58,237,0.4)] group-hover:scale-110 group-hover:shadow-[0_12px_32px_0_rgba(124,58,237,0.5)] transition-all duration-300">
                         <span className="text-2xl font-bold">2</span>
                       </div>
-                      <CardTitle className="text-white text-2xl font-bold">2. We Deploy Your AI Agent</CardTitle>
+                      <CardTitle className="text-white text-lg sm:text-2xl font-bold">2. We Deploy Your AI Agent</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-base text-white/80 leading-relaxed">
@@ -233,10 +233,10 @@ export default function HomePage() {
                 <AnimatedContent delay={0.4} duration={0.8} distance={50}>
                   <Card className="glass-card-enhanced liquid-shine h-full group transform-gpu">
                     <CardHeader className="pb-4">
-                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-400 to-blue-500 text-white shadow-[0_8px_24px_0_rgba(236,72,153,0.4)] group-hover:scale-110 group-hover:shadow-[0_12px_32px_0_rgba(236,72,153,0.5)] transition-all duration-300">
+                      <div className="mb-3 sm:mb-4 flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-pink-400 to-blue-500 text-white shadow-[0_8px_24px_0_rgba(236,72,153,0.4)] group-hover:scale-110 group-hover:shadow-[0_12px_32px_0_rgba(236,72,153,0.5)] transition-all duration-300">
                         <span className="text-2xl font-bold">3</span>
                       </div>
-                      <CardTitle className="text-white text-2xl font-bold">3. We Optimize Weekly</CardTitle>
+                      <CardTitle className="text-white text-lg sm:text-2xl font-bold">3. We Optimize Weekly</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-base text-white/80 leading-relaxed">
@@ -258,8 +258,8 @@ export default function HomePage() {
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
-              <div className="mb-16 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+              <div className="mb-10 sm:mb-16 text-center">
+                <h2 className="mb-3 sm:mb-4 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white">
                   <DecryptedText
                     text="Everything Your Sales Team Wishes They Had"
                     animateOn="view"
@@ -270,13 +270,13 @@ export default function HomePage() {
                     encryptedClassName="text-white/40"
                   />
                 </h2>
-                <p className="text-lg text-white/70">
+                <p className="text-sm sm:text-lg text-white/70">
                   One system that handles the grunt work so your team handles closings.
                 </p>
               </div>
 
               <div className="mx-auto max-w-3xl">
-                <div className="frosted-glass rounded-2xl p-8 transform-gpu">
+                <div className="frosted-glass rounded-2xl p-4 sm:p-6 md:p-8 transform-gpu">
                   <ul className="grid gap-4 sm:grid-cols-2">
                     {[
                       "Capture: Web forms + WhatsApp + Instagram DM—leads can't slip through",
@@ -306,9 +306,9 @@ export default function HomePage() {
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
-              <div className="mb-16 text-center">
+              <div className="mb-10 sm:mb-16 text-center">
                 <AnimatedContent delay={0} duration={0.8}>
-                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+                  <h2 className="mb-3 sm:mb-4 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white">
                     <DecryptedText
                       text="Real Results, Real Numbers"
                       animateOn="view"
@@ -321,7 +321,7 @@ export default function HomePage() {
                   </h2>
                 </AnimatedContent>
                 <AnimatedContent delay={0.2} duration={0.8}>
-                  <p className="text-lg text-white/70">
+                  <p className="text-sm sm:text-lg text-white/70">
                     See how Indian businesses are booking 3x more meetings with zero extra headcount.
                   </p>
                 </AnimatedContent>
@@ -345,7 +345,7 @@ export default function HomePage() {
                             WhatsApp
                           </Badge>
                         </div>
-                        <CardTitle className="text-white text-2xl">Marathon Realty</CardTitle>
+                        <CardTitle className="text-white text-xl sm:text-2xl">Marathon Realty</CardTitle>
                         <p className="text-sm text-white/60 mt-1">Implementation Partner: Zaplead Solutions</p>
                       </CardHeader>
                       <CardContent className="space-y-4">
@@ -367,9 +367,9 @@ export default function HomePage() {
                 </AnimatedContent>
               </div>
 
-              <div className="mt-12 text-center">
+              <div className="mt-8 sm:mt-12 text-center">
                 <Link href="/work">
-                  <Button variant="ghost" className="glass-button text-white px-8 py-6 text-lg">
+                  <Button variant="ghost" className="glass-button text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg">
                     See All Case Studies <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
@@ -382,9 +382,9 @@ export default function HomePage() {
         <section className="py-16 sm:py-24 pb-20 sm:pb-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
-              <div className="mb-16 text-center">
+              <div className="mb-10 sm:mb-16 text-center">
                 <AnimatedContent delay={0} duration={0.8}>
-                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+                  <h2 className="mb-3 sm:mb-4 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white">
                     <DecryptedText
                       text="Why ZapLead"
                       animateOn="view"
@@ -400,10 +400,10 @@ export default function HomePage() {
             </ScrollBlurReveal>
 
             <ScrollBlurReveal>
-              <div className="grid gap-8 md:grid-cols-3 mb-16">
+              <div className="grid gap-4 sm:gap-8 md:grid-cols-3 mb-12 sm:mb-16">
                 <AnimatedContent delay={0} duration={0.8} distance={50}>
-                  <div className="text-center glass-card liquid-shine rounded-2xl p-8 transform-gpu">
-                    <h3 className="mb-3 text-xl font-semibold text-white">AI Does the Busywork</h3>
+                  <div className="text-center glass-card liquid-shine rounded-2xl p-5 sm:p-8 transform-gpu">
+                    <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-semibold text-white">AI Does the Busywork</h3>
                     <p className="text-sm text-white/70 leading-relaxed">
                       Your AI handles inquiries, objections, and scheduling. Your team shows up ready to close—with full conversation context.
                     </p>
@@ -411,8 +411,8 @@ export default function HomePage() {
                 </AnimatedContent>
 
                 <AnimatedContent delay={0.2} duration={0.8} distance={50}>
-                  <div className="text-center glass-card liquid-shine rounded-2xl p-8 transform-gpu">
-                    <h3 className="mb-3 text-xl font-semibold text-white">
+                  <div className="text-center glass-card liquid-shine rounded-2xl p-5 sm:p-8 transform-gpu">
+                    <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-semibold text-white">
                       Meetings Just Appear on Calendars
                     </h3>
                     <p className="text-sm text-white/70 leading-relaxed">
@@ -422,8 +422,8 @@ export default function HomePage() {
                 </AnimatedContent>
 
                 <AnimatedContent delay={0.4} duration={0.8} distance={50}>
-                  <div className="text-center glass-card liquid-shine rounded-2xl p-8 transform-gpu">
-                    <h3 className="mb-3 text-xl font-semibold text-white">
+                  <div className="text-center glass-card liquid-shine rounded-2xl p-5 sm:p-8 transform-gpu">
+                    <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-semibold text-white">
                       See What&apos;s Actually Converting
                     </h3>
                     <p className="text-sm text-white/70 leading-relaxed">
@@ -439,8 +439,8 @@ export default function HomePage() {
                     Ready to 3x Your Bookings?
                   </h3>
                   <Link href="/contact">
-                    <Button size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-105 px-10 py-6 text-xl shadow-2xl rounded-full transition-all duration-300">
-                      Get Your Free Pipeline Audit <ArrowRight className="h-5 w-5 ml-2" />
+                    <Button size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-105 px-6 sm:px-10 py-4 sm:py-6 text-base sm:text-xl shadow-2xl rounded-full transition-all duration-300">
+                      Get Your Free Pipeline Audit <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2" />
                     </Button>
                   </Link>
                 </div>

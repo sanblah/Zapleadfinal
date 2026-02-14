@@ -108,9 +108,9 @@ export function Footer() {
         <div className="frosted-glass relative w-full overflow-hidden rounded-none border-x-0 border-b-0 border-white/[0.15]">
           <div
             ref={topRef}
-            className="grid gap-10 border-b border-white/[0.1] p-6 sm:p-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]"
+            className="grid grid-cols-2 gap-8 sm:gap-10 border-b border-white/[0.1] p-4 sm:p-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]"
           >
-            <div className="space-y-6">
+            <div className="col-span-2 lg:col-span-1 space-y-6">
               <Link href="/" className="inline-flex items-center gap-3">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-white/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
                   <svg
@@ -224,7 +224,7 @@ export function Footer() {
 
           <div
             ref={brandRef}
-            className="border-b border-white/[0.1] overflow-hidden px-8 py-20 sm:px-14 sm:py-28"
+            className="border-b border-white/[0.1] overflow-hidden px-4 py-12 sm:px-14 sm:py-28"
           >
             <Link
               href="/contact"
@@ -266,7 +266,7 @@ export function Footer() {
               ZapLead © {currentYear}. Built for high-speed lead conversion.
             </div>
 
-            <div className="flex items-center gap-5">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-5">
               <a
                 href="https://instagram.com/zapleadin"
                 target="_blank"

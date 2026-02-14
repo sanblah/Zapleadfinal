@@ -95,7 +95,7 @@ const AIPlayground = () => {
 
     return (
         <div className="w-full max-w-4xl mx-auto">
-            <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row h-[600px]">
+            <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row h-[450px] sm:h-[520px] md:h-[600px]">
 
                 {/* Sidebar / Info Panel */}
                 <div className="hidden md:flex w-1/3 bg-black/20 border-r border-white/5 p-8 flex-col justify-between">
@@ -146,7 +146,7 @@ const AIPlayground = () => {
                 {/* Chat Area */}
                 <div className="flex-1 flex flex-col bg-gradient-to-b from-white/5 to-transparent">
                     {/* Header (Mobile only) */}
-                    <div className="md:hidden p-4 border-b border-white/10 flex items-center gap-3 bg-black/20">
+                    <div className="md:hidden p-3 sm:p-4 border-b border-white/10 flex items-center gap-3 bg-black/20">
                         <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
                             <Sparkles className="h-4 w-4 text-white" />
                         </div>
@@ -159,7 +159,7 @@ const AIPlayground = () => {
                     {/* Messages */}
                     <div
                         ref={chatContainerRef}
-                        className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+                        className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
                     >
                         <AnimatePresence initial={false}>
                             {messages.map((msg) => (
@@ -169,7 +169,7 @@ const AIPlayground = () => {
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     transition={{ duration: 0.3 }}
                                     className={cn(
-                                        "flex gap-3 max-w-[85%]",
+                                        "flex gap-2 sm:gap-3 max-w-[92%] sm:max-w-[85%]",
                                         msg.role === "user" ? "ml-auto flex-row-reverse" : ""
                                     )}
                                 >
@@ -181,7 +181,7 @@ const AIPlayground = () => {
                                     </div>
 
                                     <div className={cn(
-                                        "p-4 rounded-2xl text-sm leading-relaxed shadow-sm",
+                                        "p-3 sm:p-4 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-sm",
                                         msg.role === "ai"
                                             ? "bg-blue-500/10 border border-blue-500/20 text-blue-100 rounded-tl-none"
                                             : "bg-white text-black rounded-tr-none"
@@ -219,14 +219,14 @@ const AIPlayground = () => {
                     </div>
 
                     {/* Input Area */}
-                    <div className="p-4 border-t border-white/10 bg-black/20">
+                    <div className="p-3 sm:p-4 border-t border-white/10 bg-black/20">
                         <form onSubmit={handleSendMessage} className="relative flex items-center gap-2">
                             <input
                                 type="text"
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 placeholder="Type a message..."
-                                className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
+                                className="w-full bg-white/5 border border-white/10 rounded-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
                             />
                             <button
                                 type="submit"
@@ -236,7 +236,7 @@ const AIPlayground = () => {
                                 <Send size={18} />
                             </button>
                         </form>
-                        <p className="text-center text-[10px] text-white/30 mt-3">
+                        <p className="text-center text-[10px] text-white/30 mt-2 sm:mt-3">
                             This is a live demo. Try asking about pricing or booking.
                         </p>
                     </div>

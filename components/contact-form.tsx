@@ -158,7 +158,7 @@ export function ContactForm() {
           name="industry"
           required
           disabled={formState.status === "loading"}
-          className="flex h-11 w-full rounded-xl border border-white/[0.12] bg-white/[0.04] text-white px-4 py-2 text-sm backdrop-blur-xl backdrop-saturate-150 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/30 focus-visible:border-white/[0.25] focus-visible:bg-white/[0.06] disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
+          className="flex h-12 sm:h-11 w-full rounded-xl border border-white/[0.12] bg-white/[0.04] text-white px-4 py-2.5 sm:py-2 text-base sm:text-sm backdrop-blur-xl backdrop-saturate-150 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/30 focus-visible:border-white/[0.25] focus-visible:bg-white/[0.06] disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
           aria-required="true"
         >
           <option value="" className="bg-[#0a0a1a] text-white">Select your industry</option>
@@ -189,7 +189,7 @@ export function ContactForm() {
       <Button
         type="submit"
         size="lg"
-        className="w-full bg-white text-black hover:bg-white/90 rounded-full text-base font-semibold py-5 shadow-lg hover:shadow-xl transition-all duration-300"
+        className="w-full bg-white text-black hover:bg-white/90 rounded-full text-sm sm:text-base font-semibold py-4 sm:py-5 shadow-lg hover:shadow-xl transition-all duration-300"
         disabled={formState.status === "loading"}
       >
         {formState.status === "loading" ? "Sending..." : "Get My Free Audit"}

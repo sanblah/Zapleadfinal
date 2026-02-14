@@ -30,7 +30,7 @@ const PipelineLeakage = () => {
 
     return (
         <motion.div
-            className="w-full max-w-4xl mx-auto p-8 bg-black/90 border border-red-500/30 rounded-3xl backdrop-blur-xl overflow-hidden relative min-h-[550px] flex flex-col items-center justify-center shadow-[0_0_50px_rgba(239,68,68,0.2)]"
+            className="w-full max-w-4xl mx-auto p-4 sm:p-6 md:p-8 bg-black/90 border border-red-500/30 rounded-2xl sm:rounded-3xl backdrop-blur-xl overflow-hidden relative min-h-[350px] sm:min-h-[550px] flex flex-col items-center justify-center shadow-[0_0_50px_rgba(239,68,68,0.2)]"
             animate={shake ? { x: [-5, 5, -5, 5, 0], backgroundColor: "rgba(50, 0, 0, 0.9)" } : { backgroundColor: "rgba(0, 0, 0, 0.9)" }}
             transition={{ duration: 0.2 }}
         >
@@ -38,24 +38,25 @@ const PipelineLeakage = () => {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ef44441a_1px,transparent_1px),linear-gradient(to_bottom,#ef44441a_1px,transparent_1px)] bg-[size:32px_32px]" />
             <div className="absolute inset-0 bg-gradient-to-b from-red-900/10 via-transparent to-black/90 pointer-events-none" />
 
-            {/* Revenue Lost Ticker */}
-            <div className="absolute top-8 right-8 z-20 text-right">
-                <p className="text-red-400 text-xs font-mono uppercase tracking-widest mb-1 animate-pulse">Lost Revenue (Today)</p>
-                <div className="text-4xl font-black text-red-500 font-mono tracking-tighter tabular-nums">
-                    -₹{revenueLost.toLocaleString()}
+            {/* Top labels - stacked on mobile, absolute positioned on desktop */}
+            <div className="relative z-20 w-full flex flex-col sm:flex-row sm:justify-between items-start gap-2 sm:gap-0 mb-4 sm:mb-0 sm:absolute sm:top-8 sm:left-8 sm:right-8">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                    <AlertTriangle className="text-red-500 animate-pulse w-4 h-4 sm:w-6 sm:h-6" />
+                    <span className="text-red-500 font-bold tracking-widest uppercase text-[10px] sm:text-sm">System Critical</span>
+                </div>
+                <div className="text-left sm:text-right">
+                    <p className="text-red-400 text-[10px] sm:text-xs font-mono uppercase tracking-widest mb-0.5 sm:mb-1 animate-pulse">Lost Revenue (Today)</p>
+                    <div className="text-lg sm:text-2xl md:text-4xl font-black text-red-500 font-mono tracking-tighter tabular-nums">
+                        -₹{revenueLost.toLocaleString()}
+                    </div>
                 </div>
             </div>
 
-            <div className="absolute top-8 left-8 z-20 flex items-center gap-2">
-                <AlertTriangle className="text-red-500 animate-pulse" />
-                <span className="text-red-500 font-bold tracking-widest uppercase text-sm">System Critical</span>
-            </div>
-
-            <h3 className="text-3xl font-bold text-white mb-12 z-10 tracking-tight text-center">
-                This Is Happening <span className="text-red-500 bg-red-500/10 px-2 py-1 rounded">Right Now</span>
+            <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-12 z-10 tracking-tight text-center">
+                This Is Happening <span className="text-red-500 bg-red-500/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-base sm:text-2xl md:text-3xl">Right Now</span>
             </h3>
 
-            <div className="relative w-full max-w-2xl h-[350px]">
+            <div className="relative w-full max-w-2xl h-[180px] sm:h-[280px] md:h-[350px]">
                 <svg className="w-full h-full overflow-visible" viewBox="0 0 600 300">
                     <defs>
                         <linearGradient id="pipeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -99,7 +100,7 @@ const PipelineLeakage = () => {
             </div>
 
             <div className="z-10 mt-2 text-center">
-                <p className="text-red-500/80 text-sm uppercase tracking-widest font-mono animate-pulse">
+                <p className="text-red-500/80 text-[10px] sm:text-sm uppercase tracking-widest font-mono animate-pulse">
                     ⚠ EVERY 5 MINUTES, A LEAD GOES COLD
                 </p>
             </div>
