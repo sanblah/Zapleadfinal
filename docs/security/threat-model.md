@@ -1,6 +1,6 @@
 # Threat Model (Current Scope)
 
-Last updated: 2026-02-14
+Last updated: 2026-02-15
 
 ## Assets
 
