@@ -1,0 +1,16 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Concept 1: Modern Pipeline Z -->
+  <defs>
+    <linearGradient id="zapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="400" rx="40" fill="#0F172A"/>
+  
+  <path d="M120 120H280L120 280H280" stroke="white" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 120H280L120 280H280" stroke="url(#zapGradient)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <text x="200" y="360" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="28" fill="white">Zaplead Solutions</text>
+</svg>

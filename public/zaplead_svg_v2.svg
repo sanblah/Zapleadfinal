@@ -1,0 +1,25 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Concept 2: Minimalist Connection Z -->
+  <defs>
+    <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="40" fill="#0F172A"/>
+
+  <!-- The Z Structure -->
+  <path d="M140 140 H260 L140 260 H260" stroke="#E2E8F0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
+  
+  <circle cx="140" cy="140" r="12" fill="url(#nodeGradient)"/>
+  <circle cx="260" cy="140" r="12" fill="url(#nodeGradient)"/>
+  <circle cx="140" cy="260" r="12" fill="url(#nodeGradient)"/>
+  <circle cx="260" cy="260" r="12" fill="url(#nodeGradient)"/>
+  
+  <path d="M140 140 L260 140" stroke="url(#nodeGradient)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M260 140 L140 260" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <path d="M140 260 L260 260" stroke="url(#nodeGradient)" stroke-width="12" stroke-linecap="round"/>
+
+  <text x="200" y="360" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="28" fill="white">Zaplead Solutions</text>
+</svg>

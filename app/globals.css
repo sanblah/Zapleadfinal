@@ -1,0 +1,388 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-space-grotesk: 'Space Grotesk', sans-serif;
+
+    --background: 0 0% 0%;
+    /* Black */
+    --foreground: 0 0% 98%;
+    /* Almost white */
+
+    --muted: 0 0% 10%;
+    /* Dark gray */
+    --muted-foreground: 0 0% 60%;
+    /* Medium gray */
+
+    --border: 0 0% 20%;
+    /* Border gray */
+    --input: 0 0% 20%;
+    /* Input border */
+    --ring: 210 100% 60%;
+    /* Muted electric blue for focus */
+
+    --primary: 210 100% 60%;
+    /* Muted electric blue */
+    --primary-foreground: 0 0% 0%;
+    /* Black text on blue */
+
+    --secondary: 0 0% 15%;
+    /* Slightly lighter than background */
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 210 100% 60%;
+    /* Muted electric blue */
+    --accent-foreground: 0 0% 0%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings use Dosis font */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* Large headings get tighter spacing */
+  h1 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  /* Visible focus rings for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded;
+  }
+}
+
+@layer utilities {
+
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* ========================================
+     LIQUID GLASS DESIGN SYSTEM
+     True liquid glass with refraction, specular highlights,
+     and translucent depth layers
+     ======================================== */
+
+  /* Base liquid glass card */
+  .glass-card {
+    @apply backdrop-blur-2xl backdrop-saturate-[1.8] rounded-2xl;
+    @apply border border-white/[0.12];
+    @apply transition-all duration-500 ease-out;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        rgba(255, 255, 255, 0.06) 100%);
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card:hover {
+    @apply border-white/[0.22];
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.08) 100%);
+    box-shadow:
+      0 16px 48px 0 rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+  }
+
+  /* Enhanced glass — deeper refraction + stronger glow */
+  .glass-card-enhanced {
+    @apply backdrop-blur-3xl backdrop-saturate-[2.0] rounded-2xl;
+    @apply border border-white/[0.14];
+    @apply transition-all duration-500 ease-out;
+    background: linear-gradient(145deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.04) 40%,
+        rgba(255, 255, 255, 0.08) 100%);
+    box-shadow:
+      0 8px 40px 0 rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 1px 0 0 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-card-enhanced:hover {
+    @apply border-white/[0.25];
+    background: linear-gradient(145deg,
+        rgba(255, 255, 255, 0.14) 0%,
+        rgba(255, 255, 255, 0.06) 40%,
+        rgba(255, 255, 255, 0.1) 100%);
+    box-shadow:
+      0 20px 60px 0 rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.3),
+      inset 1px 0 0 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+  }
+
+  /* Glass badge/pill */
+  .glass-badge {
+    @apply backdrop-blur-xl backdrop-saturate-150 rounded-full;
+    @apply border border-white/[0.15];
+    @apply transition-all duration-300;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%);
+    box-shadow:
+      0 2px 12px 0 rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+      inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-badge:hover {
+    @apply border-white/[0.25];
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.14) 0%,
+        rgba(255, 255, 255, 0.08) 100%);
+    box-shadow:
+      0 4px 16px 0 rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  }
+
+  /* Glass button */
+  .glass-button {
+    @apply backdrop-blur-xl backdrop-saturate-150 rounded-full;
+    @apply border border-white/[0.18];
+    @apply transition-all duration-300;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%);
+    box-shadow:
+      0 4px 20px 0 rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-button:hover {
+    @apply border-white/[0.3];
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 100%);
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  /* Liquid shine sweep effect */
+  .liquid-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 40%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.08) 60%,
+        transparent 100%);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .liquid-shine:hover::before {
+    left: 100%;
+  }
+
+  /* Frosted glass backdrop — deep refraction */
+  .frosted-glass {
+    @apply backdrop-blur-3xl backdrop-saturate-[1.8] rounded-2xl;
+    @apply border border-white/[0.12];
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        rgba(255, 255, 255, 0.06) 100%);
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Glass form input */
+  .glass-input {
+    @apply backdrop-blur-xl backdrop-saturate-150 rounded-xl;
+    @apply border border-white/[0.12];
+    @apply transition-all duration-300;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .glass-input:focus {
+    @apply border-white/[0.3];
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 0 0 3px rgba(82, 39, 255, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  }
+
+  /* Smooth transforms */
+  .transform-gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+@keyframes moveBackground {
+  from {
+    background-position: 0% 0%;
+  }
+
+  to {
+    background-position: 0% -1000%;
+  }
+}
+
+/* ========================================
+   LOGOS MARQUEE ANIMATIONS
+   ======================================== */
+
+/* Infinite scroll keyframes */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Subtle floating animation for logos */
+@keyframes logo-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-3px) rotate(0.5deg);
+  }
+
+  75% {
+    transform: translateY(3px) rotate(-0.5deg);
+  }
+}
+
+/* Glow pulse animation */
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px currentColor);
+    opacity: 0.9;
+  }
+
+  50% {
+    filter: drop-shadow(0 0 16px currentColor);
+    opacity: 1;
+  }
+}
+
+/* Marquee track utilities */
+.marquee-track-left {
+  animation: marquee-left 40s linear infinite;
+  width: max-content;
+}
+
+.marquee-track-right {
+  animation: marquee-right 40s linear infinite;
+  width: max-content;
+}
+
+/* Pause on hover */
+.marquee-container:hover .marquee-track-left,
+.marquee-container:hover .marquee-track-right {
+  animation-play-state: paused;
+}
+
+/* Logo card hover effects */
+.logo-card {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo-card:hover {
+  z-index: 10;
+}
+
+/* Floating effect on logo icons */
+.logo-float {
+  animation: logo-float 3s ease-in-out infinite;
+}
+
+.logo-card:hover .logo-float {
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+/* Shine sweep effect */
+.logo-shine {
+  transition: transform 0.7s ease;
+}
+
+/* Ensure smooth GPU-accelerated animations */
+.marquee-track-left,
+.marquee-track-right {
+  will-change: transform;
+  transform: translateZ(0);
+}

@@ -1,0 +1,20 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Concept 3: Dynamic Flow Z -->
+  <defs>
+    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="40" fill="#0F172A"/>
+
+  <path d="M130 150 C 130 150, 200 150, 270 150" stroke="white" stroke-width="20" stroke-linecap="round"/>
+  <path d="M270 150 L130 250" stroke="url(#flowGradient)" stroke-width="20" stroke-linecap="round"/>
+  <path d="M130 250 C 130 250, 200 250, 270 250" stroke="white" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- "Zap" Spark -->
+  <path d="M200 180 L180 220 L220 220 L200 260" stroke="#FBBF24" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="200" y="360" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="28" fill="white">Zaplead Solutions</text>
+</svg>
