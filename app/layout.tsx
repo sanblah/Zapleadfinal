@@ -40,6 +40,11 @@ const dosis = Dosis({
 export const metadata = {
   title: "ZapLead - AI Lead Pipeline Automation",
   description: "Turn leads into revenue with AI agents that capture, qualify, and book meetings 24/7. 92% conversion rate.",
+  icons: {
+    icon: "/Zapleadlogo.png",
+    shortcut: "/Zapleadlogo.png",
+    apple: "/Zapleadlogo.png",
+  },
   openGraph: {
     title: "ZapLead - AI Lead Pipeline Automation",
     description: "Turn leads into revenue with AI agents that capture, qualify, and book meetings 24/7.",
