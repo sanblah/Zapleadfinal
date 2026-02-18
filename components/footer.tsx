@@ -129,7 +129,7 @@ export function Footer() {
                 <span className="text-xl font-semibold text-white">ZapLead</span>
               </Link>
 
-              <p className="max-w-md text-sm leading-relaxed text-white/75">
+              <p className="max-w-md text-base leading-relaxed text-white/75 font-light">
                 Capture, qualify, route, and follow up with every lead across web and
                 WhatsApp without manual bottlenecks.
               </p>
@@ -148,19 +148,19 @@ export function Footer() {
               <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
                 Navigate
               </h3>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-3 text-base">
                 <li>
-                  <Link href="/" className="text-white/80 transition-colors duration-200 hover:text-white">
+                  <Link href="/" className="text-white/80 font-light transition-colors duration-200 hover:text-white">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/work" className="text-white/80 transition-colors duration-200 hover:text-white">
+                  <Link href="/work" className="text-white/80 font-light transition-colors duration-200 hover:text-white">
                     Work
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-white/80 transition-colors duration-200 hover:text-white">
+                  <Link href="/contact" className="text-white/80 font-light transition-colors duration-200 hover:text-white">
                     Contact
                   </Link>
                 </li>
@@ -171,11 +171,11 @@ export function Footer() {
               <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
                 Connect
               </h3>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-3 text-base">
                 <li>
                   <a
                     href="mailto:aizaplead@gmail.com"
-                    className="text-white/80 transition-colors duration-200 hover:text-white"
+                    className="text-white/80 font-light transition-colors duration-200 hover:text-white"
                   >
                     aizaplead@gmail.com
                   </a>
@@ -185,7 +185,7 @@ export function Footer() {
                     href="https://wa.me/918657532671"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/80 transition-colors duration-200 hover:text-white"
+                    className="text-white/80 font-light transition-colors duration-200 hover:text-white"
                   >
                     WhatsApp
                   </a>
@@ -195,7 +195,7 @@ export function Footer() {
                     href="https://instagram.com/zapleadin"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/80 transition-colors duration-200 hover:text-white"
+                    className="text-white/80 font-light transition-colors duration-200 hover:text-white"
                   >
                     Instagram
                   </a>
@@ -205,7 +205,7 @@ export function Footer() {
                     href="https://www.linkedin.com/company/zapleadai/posts/?feedView=all"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/80 transition-colors duration-200 hover:text-white"
+                    className="text-white/80 font-light transition-colors duration-200 hover:text-white"
                   >
                     LinkedIn
                   </a>
@@ -213,7 +213,7 @@ export function Footer() {
                 <li>
                   <a
                     href="tel:+918657532671"
-                    className="text-white/80 transition-colors duration-200 hover:text-white"
+                    className="text-white/80 font-light transition-colors duration-200 hover:text-white"
                   >
                     +91 86575 32671
                   </a>
@@ -253,7 +253,7 @@ export function Footer() {
                 </span>
               </span>
             </Link>
-            <p className="mt-4 text-sm text-white/55">
+            <p className="mt-4 text-base text-white/55 font-light">
               AI that qualifies. Humans that close.
             </p>
           </div>

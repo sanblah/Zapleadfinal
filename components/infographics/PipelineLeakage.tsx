@@ -17,46 +17,46 @@ const PipelineLeakage = () => {
                 if (newLeads.length > 20) return newLeads.slice(newLeads.length - 20);
                 return newLeads;
             });
-        }, 1000); // Slightly faster to increase chaos
+        }, 1000);
         return () => clearInterval(interval);
     }, []);
 
-    // Trigger shake and revenue loss on leaks
     const handleLeak = () => {
-        setRevenueLost((prev) => prev + 12500); // ₹12,500 per lead (avg deal value)
+        setRevenueLost((prev) => prev + 12500);
         setShake(true);
         setTimeout(() => setShake(false), 200);
     };
 
     return (
         <motion.div
-            className="w-full max-w-4xl mx-auto p-8 bg-black/90 border border-red-500/30 rounded-3xl backdrop-blur-xl overflow-hidden relative min-h-[550px] flex flex-col items-center justify-center shadow-[0_0_50px_rgba(239,68,68,0.2)]"
+            className="w-full max-w-4xl mx-auto p-4 sm:p-8 bg-black/90 border border-red-500/30 rounded-2xl sm:rounded-3xl backdrop-blur-xl overflow-hidden relative min-h-[380px] sm:min-h-[550px] flex flex-col items-center justify-center shadow-[0_0_50px_rgba(239,68,68,0.2)]"
             animate={shake ? { x: [-5, 5, -5, 5, 0], backgroundColor: "rgba(50, 0, 0, 0.9)" } : { backgroundColor: "rgba(0, 0, 0, 0.9)" }}
             transition={{ duration: 0.2 }}
         >
             {/* Grid Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ef44441a_1px,transparent_1px),linear-gradient(to_bottom,#ef44441a_1px,transparent_1px)] bg-[size:32px_32px]" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ef44441a_1px,transparent_1px),linear-gradient(to_bottom,#ef44441a_1px,transparent_1px)] bg-[size:24px_24px] sm:bg-[size:32px_32px]" />
             <div className="absolute inset-0 bg-gradient-to-b from-red-900/10 via-transparent to-black/90 pointer-events-none" />
 
-            {/* Revenue Lost Ticker */}
-            <div className="absolute top-8 right-8 z-20 text-right">
-                <p className="text-red-400 text-xs font-mono uppercase tracking-widest mb-1 animate-pulse">Lost Revenue (Today)</p>
-                <div className="text-4xl font-black text-red-500 font-mono tracking-tighter tabular-nums">
-                    -₹{revenueLost.toLocaleString()}
+            {/* Header: System Critical + Revenue Lost - stacked on mobile, side-by-side on desktop */}
+            <div className="relative z-20 w-full flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-0 mb-6 sm:mb-0 sm:absolute sm:top-8 sm:left-8 sm:right-8">
+                <div className="flex items-center gap-2">
+                    <AlertTriangle className="text-red-500 animate-pulse h-5 w-5 sm:h-6 sm:w-6" />
+                    <span className="text-red-500 font-bold tracking-widest uppercase text-xs sm:text-sm">System Critical</span>
+                </div>
+                <div className="text-left sm:text-right">
+                    <p className="text-red-400 text-[10px] sm:text-xs font-mono uppercase tracking-widest mb-0.5 sm:mb-1 animate-pulse">Lost Revenue (Today)</p>
+                    <div className="text-2xl sm:text-4xl font-black text-red-500 font-mono tracking-tighter tabular-nums">
+                        -₹{revenueLost.toLocaleString()}
+                    </div>
                 </div>
             </div>
 
-            <div className="absolute top-8 left-8 z-20 flex items-center gap-2">
-                <AlertTriangle className="text-red-500 animate-pulse" />
-                <span className="text-red-500 font-bold tracking-widest uppercase text-sm">System Critical</span>
-            </div>
-
-            <h3 className="text-3xl font-bold text-white mb-12 z-10 tracking-tight text-center">
+            <h3 className="text-xl sm:text-3xl font-bold text-white mb-6 sm:mb-12 z-10 tracking-tight text-center">
                 This Is Happening <span className="text-red-500 bg-red-500/10 px-2 py-1 rounded">Right Now</span>
             </h3>
 
-            <div className="relative w-full max-w-2xl h-[350px]">
-                <svg className="w-full h-full overflow-visible" viewBox="0 0 600 300">
+            <div className="relative w-full max-w-2xl h-[200px] sm:h-[350px]">
+                <svg className="w-full h-full overflow-visible" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet">
                     <defs>
                         <linearGradient id="pipeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stopColor="#334155" stopOpacity="0.5" />
@@ -80,12 +80,12 @@ const PipelineLeakage = () => {
                     {/* Leak Visuals */}
                     <g transform="translate(225, 170)">
                         <circle r="4" fill="#EF4444" filter="url(#redGlow)" className="animate-ping" />
-                        <text x="0" y="50" textAnchor="middle" className="fill-red-500 text-xs font-bold font-mono tracking-wider uppercase">Slow Reply</text>
+                        <text x="0" y="50" textAnchor="middle" className="fill-red-500 font-bold font-mono tracking-wider uppercase" style={{ fontSize: "12px" }}>Slow Reply</text>
                     </g>
 
                     <g transform="translate(425, 170)">
                         <circle r="4" fill="#EF4444" filter="url(#redGlow)" className="animate-ping" style={{ animationDelay: "0.5s" }} />
-                        <text x="0" y="50" textAnchor="middle" className="fill-red-500 text-xs font-bold font-mono tracking-wider uppercase">No Follow-up</text>
+                        <text x="0" y="50" textAnchor="middle" className="fill-red-500 font-bold font-mono tracking-wider uppercase" style={{ fontSize: "12px" }}>No Follow-up</text>
                     </g>
 
                     {/* Leads */}
@@ -99,7 +99,7 @@ const PipelineLeakage = () => {
             </div>
 
             <div className="z-10 mt-2 text-center">
-                <p className="text-red-500/80 text-sm uppercase tracking-widest font-mono animate-pulse">
+                <p className="text-red-500/80 text-xs sm:text-sm uppercase tracking-widest font-mono animate-pulse">
                     ⚠ EVERY 5 MINUTES, A LEAD GOES COLD
                 </p>
             </div>
@@ -149,7 +149,6 @@ const Lead = ({ onLeak }: { onLeak: () => void }) => {
                     animate={{ opacity: 0, y: 100, scale: 0.5 }}
                     transition={{ duration: 0.8 }}
                 >
-                    {/* Skull / X Icon when dead */}
                     <foreignObject
                         x={fate === "leak1" ? 213 : 413}
                         y={138}

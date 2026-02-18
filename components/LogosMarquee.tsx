@@ -225,7 +225,7 @@ export default function LogosMarquee() {
                             </h2>
                         </AnimatedContent>
                         <AnimatedContent delay={0.4} duration={0.8}>
-                            <p className="text-base sm:text-xl text-white/70 max-w-2xl mx-auto">
+                            <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto font-light leading-relaxed">
                                 Your <span className="text-blue-400 font-semibold">CRM</span>, <span className="text-green-400 font-semibold">WhatsApp</span>, calendars, spreadsheets—whatever tools you use, we&apos;ll make them talk to each other.
                             </p>
                         </AnimatedContent>
@@ -259,7 +259,7 @@ export default function LogosMarquee() {
                                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                                     {stat.value}
                                 </div>
-                                <div className="text-xs sm:text-sm text-white/50 mt-1">{stat.label}</div>
+                                <div className="text-sm sm:text-base text-white/50 mt-1 font-light">{stat.label}</div>
                             </div>
                         ))}
                     </div>
