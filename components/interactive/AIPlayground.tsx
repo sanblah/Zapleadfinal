@@ -95,7 +95,7 @@ const AIPlayground = () => {
 
     return (
         <div className="w-full max-w-4xl mx-auto">
-            <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row h-[600px]">
+            <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row h-[450px] sm:h-[600px]">
 
                 {/* Sidebar / Info Panel */}
                 <div className="hidden md:flex w-1/3 bg-black/20 border-r border-white/5 p-8 flex-col justify-between">

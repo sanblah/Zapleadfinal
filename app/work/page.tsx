@@ -90,7 +90,7 @@ export default function WorkPage() {
               <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white">
                 Case Studies: Real Results
               </h1>
-              <p className="text-base sm:text-lg text-white/70 max-w-xl mx-auto">
+              <p className="text-lg sm:text-xl text-white/70 max-w-xl mx-auto font-light leading-relaxed">
                 How Indian businesses are closing more deals with less busywork.
               </p>
             </div>
@@ -118,7 +118,7 @@ export default function WorkPage() {
                     <CardTitle className="text-xl sm:text-2xl text-white">
                       {caseStudy.company}
                     </CardTitle>
-                    <p className="text-sm text-white/70">
+                    <p className="text-base text-white/70 font-light">
                       {caseStudy.industry}
                     </p>
                   </CardHeader>
@@ -127,7 +127,7 @@ export default function WorkPage() {
                       <h3 className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white/60">
                         Problem
                       </h3>
-                      <p className="text-sm leading-relaxed text-white/80">
+                      <p className="text-base leading-relaxed text-white/80 font-light">
                         {caseStudy.problem}
                       </p>
                     </div>
@@ -140,10 +140,10 @@ export default function WorkPage() {
                         {caseStudy.system.map((item, index) => (
                           <li
                             key={index}
-                            className="flex items-start gap-2 text-sm"
+                            className="flex items-start gap-2 text-base"
                           >
-                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400/80" />
-                            <span className="leading-relaxed text-white/80">{item}</span>
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400/80" />
+                            <span className="leading-relaxed text-white/80 font-light">{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -153,7 +153,7 @@ export default function WorkPage() {
                       <h3 className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white/60">
                         Impact
                       </h3>
-                      <p className="text-sm leading-relaxed text-white font-medium">
+                      <p className="text-base leading-relaxed text-white font-medium">
                         {caseStudy.impact}
                       </p>
                     </div>

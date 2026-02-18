@@ -1,5 +1,5 @@
 
-import { Inter, Space_Grotesk, JetBrains_Mono, Dosis } from "next/font/google";
+import { Manrope, Space_Grotesk, JetBrains_Mono, Dosis } from "next/font/google";
 import "./globals.css";
 import { StaggeredMenu } from "@/components/StaggeredMenu";
 import { Footer } from "@/components/footer";
@@ -14,11 +14,12 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
 });
 
-// Body font - clean and readable
-const inter = Inter({
+// Body font - Manrope for brand consistency
+const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 // Monospace font for technical elements
@@ -60,8 +61,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${dosis.variable}`}>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable} ${jetbrainsMono.variable} ${dosis.variable}`}>
+      <body className={`${manrope.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

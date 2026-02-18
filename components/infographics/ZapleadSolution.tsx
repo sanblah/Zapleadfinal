@@ -15,23 +15,23 @@ const ZapleadSolution = () => {
                 if (newLeads.length > 20) return newLeads.slice(newLeads.length - 20);
                 return newLeads;
             });
-        }, 600); // Fast flow
+        }, 600);
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className="w-full max-w-4xl mx-auto p-8 bg-black/80 border border-blue-500/30 rounded-3xl backdrop-blur-xl overflow-hidden relative min-h-[500px] flex flex-col items-center justify-center shadow-[0_0_50px_rgba(59,130,246,0.15)]">
+        <div className="w-full max-w-4xl mx-auto p-4 sm:p-8 bg-black/80 border border-blue-500/30 rounded-2xl sm:rounded-3xl backdrop-blur-xl overflow-hidden relative min-h-[350px] sm:min-h-[500px] flex flex-col items-center justify-center shadow-[0_0_50px_rgba(59,130,246,0.15)]">
             {/* Grid Background */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f61a_1px,transparent_1px),linear-gradient(to_bottom,#3b82f61a_1px,transparent_1px)] bg-[size:24px_24px]" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f61a_1px,transparent_1px),linear-gradient(to_bottom,#3b82f61a_1px,transparent_1px)] bg-[size:20px_20px] sm:bg-[size:24px_24px]" />
             <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-transparent to-black/90 pointer-events-none" />
 
-            <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white mb-12 z-10 tracking-tight flex items-center gap-3">
-                <Zap className="w-6 h-6 text-blue-400 fill-blue-400 animate-pulse" />
+            <h3 className="text-xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white mb-6 sm:mb-12 z-10 tracking-tight flex items-center gap-2 sm:gap-3">
+                <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 fill-blue-400 animate-pulse" />
                 The Automated Pipeline
             </h3>
 
-            <div className="relative w-full max-w-2xl h-[350px]">
-                <svg className="w-full h-full overflow-visible" viewBox="0 0 600 300">
+            <div className="relative w-full max-w-2xl h-[200px] sm:h-[350px]">
+                <svg className="w-full h-full overflow-visible" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet">
                     <defs>
                         <linearGradient id="fiberGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.2" />
@@ -85,7 +85,7 @@ const ZapleadSolution = () => {
                                 <ShieldCheck size={24} />
                             </div>
                         </foreignObject>
-                        <text x="0" y="-35" textAnchor="middle" className="fill-blue-300 text-[10px] font-mono tracking-wider uppercase">Instant Reply</text>
+                        <text x="0" y="-35" textAnchor="middle" className="fill-blue-300 font-mono tracking-wider uppercase" style={{ fontSize: "11px" }}>Instant Reply</text>
                     </g>
 
                     {/* Shield 2: Auto Follow-up */}
@@ -97,7 +97,7 @@ const ZapleadSolution = () => {
                                 <ShieldCheck size={24} />
                             </div>
                         </foreignObject>
-                        <text x="0" y="45" textAnchor="middle" className="fill-blue-300 text-[10px] font-mono tracking-wider uppercase">Auto Follow-up</text>
+                        <text x="0" y="45" textAnchor="middle" className="fill-blue-300 font-mono tracking-wider uppercase" style={{ fontSize: "11px" }}>Auto Follow-up</text>
                     </g>
 
                     {/* Leads */}
@@ -109,7 +109,7 @@ const ZapleadSolution = () => {
             </div>
 
             <div className="z-10 mt-2 text-center">
-                <p className="text-blue-400/80 text-sm uppercase tracking-widest font-mono">
+                <p className="text-blue-400/80 text-xs sm:text-sm uppercase tracking-widest font-mono">
                     System Status: <span className="text-green-400 font-bold">OPTIMIZED (100%)</span>
                 </p>
             </div>
