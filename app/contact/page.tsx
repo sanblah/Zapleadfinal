@@ -33,7 +33,7 @@ export default function ContactPage() {
               <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white">
                 Let&apos;s Build Your Pipeline
               </h1>
-              <p className="text-base sm:text-lg text-white/70 max-w-xl mx-auto">
+              <p className="text-lg sm:text-xl text-white/70 max-w-xl mx-auto font-light leading-relaxed">
                 Tell us about your leads. Within 48 hours, you&apos;ll have a custom automation plan—free, no strings attached.
               </p>
             </div>
@@ -46,18 +46,18 @@ export default function ContactPage() {
             <ContactForm />
 
             <div className="mt-6 sm:mt-8 glass-card p-5 sm:p-6 text-center">
-              <p className="mb-3 text-sm font-medium text-white">Or reach us directly</p>
+              <p className="mb-3 text-base font-medium text-white">Or reach us directly</p>
               <div className="space-y-2">
-                <p className="text-sm text-white/80">
+                <p className="text-base text-white/80 font-light">
                   Email: <a href="mailto:aizaplead@gmail.com" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">aizaplead@gmail.com</a>
                 </p>
-                <p className="text-sm text-white/80">
+                <p className="text-base text-white/80 font-light">
                   WhatsApp: <a href="https://wa.me/918657532671" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">+91 86575 32671</a>
                 </p>
-                <p className="text-sm text-white/80">
+                <p className="text-base text-white/80 font-light">
                   Instagram: <a href="https://instagram.com/zapleadin" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">@zapleadin</a>
                 </p>
-                <p className="text-sm text-white/80">
+                <p className="text-base text-white/80 font-light">
                   LinkedIn: <a href="https://www.linkedin.com/company/zapleadai/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">ZapLead AI</a>
                 </p>
               </div>
