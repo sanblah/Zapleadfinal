@@ -232,8 +232,8 @@ export function Footer() {
               className="group relative inline-block"
             >
               <span
-                className="relative block text-[clamp(4rem,16vw,11rem)] font-bold tracking-[-0.04em]"
-                style={{ fontFamily: "var(--font-heading), system-ui, sans-serif" }}
+                className="relative block text-[clamp(3rem,14vw,11rem)] font-bold tracking-[-0.04em]"
+                style={{ fontFamily: "var(--font-tinos), 'Times New Roman', serif" }}
               >
                 <span className="relative inline-block h-[1.2em] overflow-hidden leading-none align-top pr-[0.08em]">
                   <span className="invisible block h-[1.2em] leading-[1.2] whitespace-nowrap">
@@ -260,13 +260,13 @@ export function Footer() {
 
           <div
             ref={bottomRef}
-            className="relative z-20 flex flex-col items-start justify-between gap-4 px-6 py-5 sm:flex-row sm:items-center sm:px-10 sm:py-6"
+            className="relative z-20 flex flex-col items-start justify-between gap-4 px-4 py-5 sm:flex-row sm:items-center sm:px-10 sm:py-6"
           >
             <div className="text-xs text-white/45">
               ZapLead © {currentYear}. Built for high-speed lead conversion.
             </div>
 
-            <div className="flex items-center gap-5">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-5">
               <a
                 href="https://instagram.com/zapleadin"
                 target="_blank"

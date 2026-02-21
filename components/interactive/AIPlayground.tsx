@@ -105,8 +105,8 @@ const AIPlayground = () => {
                                 <Sparkles className="h-5 w-5 text-white" />
                             </div>
                             <div>
-                                <h3 className="font-bold text-white">ZapLead AI</h3>
-                                <p className="text-xs text-green-400 flex items-center gap-1">
+                                <h3 className="font-bold text-white text-lg">ZapLead AI</h3>
+                                <p className="text-sm text-green-400 flex items-center gap-1">
                                     <span className="relative flex h-2 w-2">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -120,15 +120,15 @@ const AIPlayground = () => {
                             <div className="bg-white/5 rounded-xl p-4 border border-white/5">
                                 <div className="flex items-center gap-2 mb-2 text-blue-300">
                                     <Clock className="h-4 w-4" />
-                                    <span className="text-sm font-semibold">Response Time</span>
+                                    <span className="text-base font-semibold">Response Time</span>
                                 </div>
                                 <p className="text-2xl font-bold text-white">~0.2s</p>
-                                <p className="text-xs text-white/50">Faster than any human</p>
+                                <p className="text-sm text-white/50">Faster than any human</p>
                             </div>
 
                             <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                                <h4 className="text-sm font-semibold text-white mb-2">Capabilities</h4>
-                                <ul className="text-xs text-white/60 space-y-2">
+                                <h4 className="text-base font-semibold text-white mb-2">Capabilities</h4>
+                                <ul className="text-sm text-white/60 space-y-2">
                                     <li className="flex items-center gap-2">✓ Qualifies Leads</li>
                                     <li className="flex items-center gap-2">✓ Books Meetings</li>
                                     <li className="flex items-center gap-2">✓ Handles Objections</li>
@@ -138,7 +138,7 @@ const AIPlayground = () => {
                         </div>
                     </div>
 
-                    <div className="text-xs text-white/30 text-center">
+                    <div className="text-sm text-white/30 text-center">
                         Powered by ZapLead Engine v2.0
                     </div>
                 </div>
@@ -151,8 +151,8 @@ const AIPlayground = () => {
                             <Sparkles className="h-4 w-4 text-white" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-white text-sm">ZapLead AI</h3>
-                            <p className="text-[10px] text-green-400">Online</p>
+                            <h3 className="font-bold text-white text-base">ZapLead AI</h3>
+                            <p className="text-xs text-green-400">Online</p>
                         </div>
                     </div>
 
@@ -181,15 +181,17 @@ const AIPlayground = () => {
                                     </div>
 
                                     <div className={cn(
-                                        "p-4 rounded-2xl text-sm leading-relaxed shadow-sm",
+                                        "p-4 rounded-2xl text-base sm:text-lg leading-relaxed shadow-sm",
                                         msg.role === "ai"
-                                            ? "bg-blue-500/10 border border-blue-500/20 text-blue-100 rounded-tl-none"
+                                            ? "border rounded-tl-none"
                                             : "bg-white text-black rounded-tr-none"
-                                    )}>
+                                    )}
+                                        style={msg.role === "ai" ? { background: "rgba(255, 200, 170, 0.1)", borderColor: "rgba(255, 180, 140, 0.2)", color: "#fde8d8" } : {}}
+                                    >
                                         {msg.text}
                                         <div className={cn(
-                                            "text-[10px] mt-1 opacity-50",
-                                            msg.role === "ai" ? "text-blue-200" : "text-black/60"
+                                            "text-xs mt-1 opacity-50",
+                                            msg.role === "ai" ? "text-orange-200" : "text-black/60"
                                         )}>
                                             {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                         </div>
@@ -208,10 +210,10 @@ const AIPlayground = () => {
                                 <div className="h-8 w-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
                                     <Bot size={16} />
                                 </div>
-                                <div className="bg-blue-500/10 border border-blue-500/20 px-4 py-3 rounded-2xl rounded-tl-none flex items-center gap-1">
-                                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                                    <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                                <div className="px-4 py-3 rounded-2xl rounded-tl-none flex items-center gap-1" style={{ background: "rgba(255, 200, 170, 0.1)", borderColor: "rgba(255, 180, 140, 0.2)", border: "1px solid rgba(255, 180, 140, 0.2)" }}>
+                                    <span className="w-2 h-2 rounded-full animate-bounce" style={{ background: "#ffb88c", animationDelay: "0ms" }} />
+                                    <span className="w-2 h-2 rounded-full animate-bounce" style={{ background: "#ffb88c", animationDelay: "150ms" }} />
+                                    <span className="w-2 h-2 rounded-full animate-bounce" style={{ background: "#ffb88c", animationDelay: "300ms" }} />
                                 </div>
                             </motion.div>
                         )}
@@ -226,7 +228,7 @@ const AIPlayground = () => {
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 placeholder="Type a message..."
-                                className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
+                                className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-base sm:text-lg text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-orange-300/40 transition-all"
                             />
                             <button
                                 type="submit"
@@ -236,7 +238,7 @@ const AIPlayground = () => {
                                 <Send size={18} />
                             </button>
                         </form>
-                        <p className="text-center text-[10px] text-white/30 mt-3">
+                        <p className="text-center text-xs text-white/30 mt-3">
                             This is a live demo. Try asking about pricing or booking.
                         </p>
                     </div>

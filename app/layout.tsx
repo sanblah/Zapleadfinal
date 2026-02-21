@@ -1,45 +1,30 @@
 
-import { Inter, Space_Grotesk, JetBrains_Mono, Dosis } from "next/font/google";
+import { Tinos } from "next/font/google";
 import "./globals.css";
 import { StaggeredMenu } from "@/components/StaggeredMenu";
 import { Footer } from "@/components/footer";
 import { Sparkles } from "lucide-react";
 import SmoothScroll from "@/components/SmoothScroll";
+import MobileActions from "@/components/MobileActions";
 
-// Display font for headings - modern geometric sans
-const spaceGrotesk = Space_Grotesk({
+// Tinos — elegant serif for the entire site
+const tinos = Tinos({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-tinos",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-// Body font - clean and readable
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-// Monospace font for technical elements
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
-
-// Dosis font for titles - modern rounded sans
-const dosis = Dosis({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata = {
   title: "ZapLead - AI Lead Pipeline Automation",
   description: "Turn leads into revenue with AI agents that capture, qualify, and book meetings 24/7. 92% conversion rate.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    viewportFit: "cover" as const,
+  },
   icons: {
     icon: "/Zapleadlogo.png",
     shortcut: "/Zapleadlogo.png",
@@ -60,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${dosis.variable}`}>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-background text-foreground`}>
+    <html lang="en" className={tinos.variable}>
+      <body className={`${tinos.variable} antialiased bg-background text-foreground`} style={{ fontFamily: "var(--font-tinos), 'Times New Roman', serif" }}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
@@ -85,8 +70,9 @@ export default function RootLayout({
           displaySocials={true}
           displayItemNumbering={true}
         />
-        <main id="main-content" className="relative z-10 bg-background">{children}</main>
+        <main id="main-content" className="relative z-10 bg-background pb-16 md:pb-0">{children}</main>
         <Footer />
+        <MobileActions />
       </body>
     </html>
   );

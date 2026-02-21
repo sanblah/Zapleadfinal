@@ -542,9 +542,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-panel-item:hover { color: var(--sm-accent, #ff0000); }
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 2em; font-size: 16px; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
-@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
+@media (max-width: 1024px) { .sm-scope .staggered-menu-header { padding: 1.25rem 1rem; } .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; padding: 5.5rem 1.25rem 1.5rem 1.25rem; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } .sm-scope .sm-panel-item { font-size: clamp(2rem, 8vw, 2.4rem); } }
 @media (max-width: 1024px) { .sm-scope .sm-logo-img { height: 74px; } }
-@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .sm-logo-img { height: 62px; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
+@media (max-width: 640px) { .sm-scope .staggered-menu-header { padding: 1rem 0.875rem; } .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; padding: 5rem 1rem 1.25rem 1rem; } .sm-scope .sm-logo-img { height: 58px; } .sm-scope .sm-toggle { font-size: 0.95rem; } .sm-scope .sm-socials-link { font-size: 1.05rem; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
       `}</style>
     </div>
   );

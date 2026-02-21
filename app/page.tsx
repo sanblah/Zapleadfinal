@@ -45,7 +45,7 @@ export default function HomePage() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
           {/* Content */}
-          <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-32 text-center overflow-visible">
+          <div className="relative z-10 mx-auto max-w-6xl px-4 pt-24 pb-20 sm:px-6 sm:py-32 text-center overflow-visible">
             <AnimatedContent delay={0} duration={0.8}>
               <Badge
                 variant="outline"
@@ -57,30 +57,30 @@ export default function HomePage() {
             </AnimatedContent>
 
             <AnimatedContent delay={0.15} duration={1}>
-              <h1 className="mb-4 sm:mb-6 text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1">
-                <span className="bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 bg-clip-text text-transparent drop-shadow-2xl">
-                  Your Leads Deserve
-                </span>
+              <h1 className="mb-4 sm:mb-6 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-white"
+                style={{ textShadow: "0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(82,39,255,0.2)" }}
+              >
+                Your Leads Deserve
               </h1>
             </AnimatedContent>
 
             <AnimatedContent delay={0.3} duration={1}>
-              <h1 className="mb-6 sm:mb-8 text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1">
-                <span className="bg-gradient-to-r from-pink-200 via-purple-300 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl">
-                  Instant Responses
-                </span>
+              <h1 className="mb-6 sm:mb-8 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-white italic"
+                style={{ textShadow: "0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(82,39,255,0.2)" }}
+              >
+                Instant Responses
               </h1>
             </AnimatedContent>
 
             <AnimatedContent delay={0.45} duration={0.8} distance={30}>
               <p className="mb-8 sm:mb-12 text-base sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
-                Most leads go cold in <span className="text-red-400 font-semibold">5 minutes</span>. Our AI responds in <span className="text-green-400 font-semibold">5 seconds</span>—qualifying, booking, and following up while your competitors are still typing.
+                An agentic AI approach to leads.
               </p>
             </AnimatedContent>
 
             <AnimatedContent delay={0.6} duration={0.8} distance={30}>
-              <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row">
-                <Link href="/contact">
+              <div className="flex w-full flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row">
+                <Link href="/contact" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     className="bg-white text-black hover:bg-white/90 hover:scale-105 px-8 sm:px-10 py-5 sm:py-6 text-lg sm:text-xl shadow-2xl rounded-full transition-all duration-300 w-full sm:w-auto"
@@ -89,7 +89,7 @@ export default function HomePage() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link href="/work">
+                <Link href="/work" className="w-full sm:w-auto">
                   <Button
                     variant="glass"
                     size="lg"
@@ -120,7 +120,7 @@ export default function HomePage() {
                     encryptedClassName="text-white/40"
                   />
                 </h2>
-                <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                <p className="text-xl sm:text-2xl text-white/70 max-w-2xl mx-auto">
                   65% of your leads go cold before your team replies. That&apos;s not a sales problem—it&apos;s a speed problem.
                 </p>
               </div>
@@ -155,7 +155,7 @@ export default function HomePage() {
                     encryptedClassName="text-white/40"
                   />
                 </h2>
-                <p className="text-xl text-white/70 max-w-2xl mx-auto">
+                <p className="text-xl sm:text-2xl text-white/70 max-w-2xl mx-auto">
                   This is the same AI your leads would talk to. <span className="text-blue-400 font-semibold">Ask anything</span>—pricing, availability, objections. Time the response.
                 </p>
               </div>
@@ -207,7 +207,7 @@ export default function HomePage() {
                       <CardTitle className="text-white text-2xl font-bold">1. We Audit Your Pipeline</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-lg text-white/80 leading-relaxed">
                         We analyze where leads come from, where they drop off, and what&apos;s costing you money. Takes 48 hours, not weeks.
                       </p>
                     </CardContent>
@@ -223,7 +223,7 @@ export default function HomePage() {
                       <CardTitle className="text-white text-2xl font-bold">2. We Deploy Your AI Agent</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-lg text-white/80 leading-relaxed">
                         Your AI goes live on web + WhatsApp, connected to your CRM and calendar. Zero code changes on your end.
                       </p>
                     </CardContent>
@@ -239,7 +239,7 @@ export default function HomePage() {
                       <CardTitle className="text-white text-2xl font-bold">3. We Optimize Weekly</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-base text-white/80 leading-relaxed">
+                      <p className="text-lg text-white/80 leading-relaxed">
                         Every week we analyze conversations, fix drop-offs, and improve close rates. You get a dashboard, not homework.
                       </p>
                     </CardContent>
@@ -270,7 +270,7 @@ export default function HomePage() {
                     encryptedClassName="text-white/40"
                   />
                 </h2>
-                <p className="text-lg text-white/70">
+                <p className="text-xl sm:text-2xl text-white/70">
                   One system that handles the grunt work so your team handles closings.
                 </p>
               </div>
@@ -290,7 +290,7 @@ export default function HomePage() {
                     ].map((feature, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-white" />
-                        <span className="text-sm text-white/80">
+                        <span className="text-base sm:text-lg text-white/80">
                           {feature}
                         </span>
                       </li>
@@ -321,7 +321,7 @@ export default function HomePage() {
                   </h2>
                 </AnimatedContent>
                 <AnimatedContent delay={0.2} duration={0.8}>
-                  <p className="text-lg text-white/70">
+                  <p className="text-xl sm:text-2xl text-white/70">
                     See how Indian businesses are booking 3x more meetings with zero extra headcount.
                   </p>
                 </AnimatedContent>
@@ -349,10 +349,10 @@ export default function HomePage() {
                         <p className="text-sm text-white/60 mt-1">Implementation Partner: Zaplead Solutions</p>
                       </CardHeader>
                       <CardContent className="space-y-4">
-                        <p className="text-sm text-white/70 leading-relaxed">
+                        <p className="text-base sm:text-lg text-white/70 leading-relaxed">
                           Modernized pre-sales operations through workflow automation and AI-driven analysis—reducing manual effort, improving response times, and building a scalable system for customer interactions.
                         </p>
-                        <p className="text-sm text-white font-medium">
+                        <p className="text-base sm:text-lg text-white font-medium">
                           Reduced manual workload • Faster response times • Scalable AI-driven workflow
                         </p>
                         <Link
@@ -404,7 +404,7 @@ export default function HomePage() {
                 <AnimatedContent delay={0} duration={0.8} distance={50}>
                   <div className="text-center glass-card liquid-shine rounded-2xl p-8 transform-gpu">
                     <h3 className="mb-3 text-xl font-semibold text-white">AI Does the Busywork</h3>
-                    <p className="text-sm text-white/70 leading-relaxed">
+                    <p className="text-base sm:text-lg text-white/70 leading-relaxed">
                       Your AI handles inquiries, objections, and scheduling. Your team shows up ready to close—with full conversation context.
                     </p>
                   </div>
@@ -415,7 +415,7 @@ export default function HomePage() {
                     <h3 className="mb-3 text-xl font-semibold text-white">
                       Meetings Just Appear on Calendars
                     </h3>
-                    <p className="text-sm text-white/70 leading-relaxed">
+                    <p className="text-base sm:text-lg text-white/70 leading-relaxed">
                       Forget &apos;when are you free?&apos; — leads pick a slot, it lands on your calendar, they get a WhatsApp reminder. Done.
                     </p>
                   </div>
@@ -426,7 +426,7 @@ export default function HomePage() {
                     <h3 className="mb-3 text-xl font-semibold text-white">
                       See What&apos;s Actually Converting
                     </h3>
-                    <p className="text-sm text-white/70 leading-relaxed">
+                    <p className="text-base sm:text-lg text-white/70 leading-relaxed">
                       Which campaigns drive bookings? Where do leads ghost you? Know in 60 seconds, not 6 meetings.
                     </p>
                   </div>

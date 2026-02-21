@@ -4,18 +4,18 @@
 
 @layer base {
   :root {
-    --font-inter: 'Inter', sans-serif;
-    --font-space-grotesk: 'Space Grotesk', sans-serif;
+    --font-inter: var(--font-tinos), 'Times New Roman', serif;
+    --font-space-grotesk: var(--font-tinos), 'Times New Roman', serif;
 
     --background: 0 0% 0%;
     /* Black */
-    --foreground: 0 0% 98%;
-    /* Almost white */
+    --foreground: 20 80% 93%;
+    /* Peach-tinted white */
 
     --muted: 0 0% 10%;
     /* Dark gray */
-    --muted-foreground: 0 0% 60%;
-    /* Medium gray */
+    --muted-foreground: 20 30% 65%;
+    /* Warm medium gray */
 
     --border: 0 0% 20%;
     /* Border gray */
@@ -31,7 +31,7 @@
 
     --secondary: 0 0% 15%;
     /* Slightly lighter than background */
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 20 80% 93%;
 
     --accent: 210 100% 60%;
     /* Muted electric blue */
@@ -61,7 +61,7 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-heading), system-ui, sans-serif;
+    font-family: var(--font-tinos), 'Times New Roman', serif;
     font-weight: 600;
     letter-spacing: -0.02em;
   }
