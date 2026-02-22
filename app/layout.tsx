@@ -1,5 +1,5 @@
 
-import { Tinos } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { StaggeredMenu } from "@/components/StaggeredMenu";
 import { Footer } from "@/components/footer";
@@ -7,13 +7,12 @@ import { Sparkles } from "lucide-react";
 import SmoothScroll from "@/components/SmoothScroll";
 import MobileActions from "@/components/MobileActions";
 
-// Tinos — elegant serif for the entire site
-const tinos = Tinos({
+// DM Sans — geometric sans-serif with consistent stroke weight
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-tinos",
+  variable: "--font-dm-sans",
   display: "swap",
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata = {
@@ -45,8 +44,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={tinos.variable}>
-      <body className={`${tinos.variable} antialiased bg-background text-foreground`} style={{ fontFamily: "var(--font-tinos), 'Times New Roman', serif" }}>
+    <html lang="en" className={dmSans.variable}>
+      <body className={`${dmSans.variable} antialiased bg-background text-foreground`} style={{ fontFamily: "var(--font-dm-sans), system-ui, sans-serif" }}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

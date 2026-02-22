@@ -57,7 +57,7 @@ export default function HomePage() {
             </AnimatedContent>
 
             <AnimatedContent delay={0.15} duration={1}>
-              <h1 className="mb-4 sm:mb-6 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-white"
+              <h1 className="mb-4 sm:mb-6 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-[#fde8d8]"
                 style={{ textShadow: "0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(82,39,255,0.2)" }}
               >
                 Your Leads Deserve
@@ -65,7 +65,7 @@ export default function HomePage() {
             </AnimatedContent>
 
             <AnimatedContent delay={0.3} duration={1}>
-              <h1 className="mb-6 sm:mb-8 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-white italic"
+              <h1 className="mb-6 sm:mb-8 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-[#fde8d8] italic"
                 style={{ textShadow: "0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(82,39,255,0.2)" }}
               >
                 Instant Responses
@@ -109,7 +109,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
               <div className="mb-16 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
                   <DecryptedText
                     text="Every Hour, You're Losing ₹12,500"
                     animateOn="view"
@@ -144,7 +144,7 @@ export default function HomePage() {
                   <Sparkles className="h-3 w-3 mr-2 animate-pulse" />
                   Live Interactive Demo
                 </Badge>
-                <h2 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl text-white">
+                <h2 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl text-[#fde8d8]">
                   <DecryptedText
                     text="Chat With Our AI Right Now"
                     animateOn="view"
@@ -176,7 +176,7 @@ export default function HomePage() {
             <ScrollBlurReveal>
               <div className="mb-20 text-center">
                 <AnimatedContent delay={0} duration={0.8}>
-                  <h2 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-white">
+                  <h2 className="mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-[#fde8d8]">
                     <DecryptedText
                       text="From Lead to Meeting in 3 Steps"
                       animateOn="view"
@@ -259,7 +259,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
               <div className="mb-16 text-center">
-                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
                   <DecryptedText
                     text="Everything Your Sales Team Wishes They Had"
                     animateOn="view"
@@ -308,7 +308,7 @@ export default function HomePage() {
             <ScrollBlurReveal>
               <div className="mb-16 text-center">
                 <AnimatedContent delay={0} duration={0.8}>
-                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
                     <DecryptedText
                       text="Real Results, Real Numbers"
                       animateOn="view"
@@ -384,7 +384,7 @@ export default function HomePage() {
             <ScrollBlurReveal>
               <div className="mb-16 text-center">
                 <AnimatedContent delay={0} duration={0.8}>
-                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white">
+                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
                     <DecryptedText
                       text="Why ZapLead"
                       animateOn="view"
@@ -403,7 +403,7 @@ export default function HomePage() {
               <div className="grid gap-8 md:grid-cols-3 mb-16">
                 <AnimatedContent delay={0} duration={0.8} distance={50}>
                   <div className="text-center glass-card liquid-shine rounded-2xl p-8 transform-gpu">
-                    <h3 className="mb-3 text-xl font-semibold text-white">AI Does the Busywork</h3>
+                    <h3 className="mb-3 text-xl font-semibold text-[#fde8d8]">AI Does the Busywork</h3>
                     <p className="text-base sm:text-lg text-white/70 leading-relaxed">
                       Your AI handles inquiries, objections, and scheduling. Your team shows up ready to close—with full conversation context.
                     </p>
@@ -412,7 +412,7 @@ export default function HomePage() {
 
                 <AnimatedContent delay={0.2} duration={0.8} distance={50}>
                   <div className="text-center glass-card liquid-shine rounded-2xl p-8 transform-gpu">
-                    <h3 className="mb-3 text-xl font-semibold text-white">
+                    <h3 className="mb-3 text-xl font-semibold text-[#fde8d8]">
                       Meetings Just Appear on Calendars
                     </h3>
                     <p className="text-base sm:text-lg text-white/70 leading-relaxed">
@@ -423,7 +423,7 @@ export default function HomePage() {
 
                 <AnimatedContent delay={0.4} duration={0.8} distance={50}>
                   <div className="text-center glass-card liquid-shine rounded-2xl p-8 transform-gpu">
-                    <h3 className="mb-3 text-xl font-semibold text-white">
+                    <h3 className="mb-3 text-xl font-semibold text-[#fde8d8]">
                       See What&apos;s Actually Converting
                     </h3>
                     <p className="text-base sm:text-lg text-white/70 leading-relaxed">
@@ -435,7 +435,7 @@ export default function HomePage() {
 
               <AnimatedContent delay={0.6} duration={0.8}>
                 <div className="text-center">
-                  <h3 className="mb-6 text-2xl sm:text-3xl font-bold text-white">
+                  <h3 className="mb-6 text-2xl sm:text-3xl font-bold text-[#fde8d8]">
                     Ready to 3x Your Bookings?
                   </h3>
                   <Link href="/contact">

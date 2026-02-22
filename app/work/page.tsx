@@ -87,7 +87,7 @@ export default function WorkPage() {
         <section className="border-b border-white/[0.1] py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white">
+              <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-[#fde8d8]">
                 Case Studies: Real Results
               </h1>
               <p className="text-lg sm:text-xl text-white/70 max-w-xl mx-auto font-light leading-relaxed">
@@ -124,7 +124,7 @@ export default function WorkPage() {
                   </CardHeader>
                   <CardContent className="p-4 sm:p-6 pt-0 space-y-5 sm:space-y-6">
                     <div>
-                      <h3 className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white/60">
+                      <h3 className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-[#fde8d8]/60">
                         Problem
                       </h3>
                       <p className="text-base leading-relaxed text-white/80 font-light">
@@ -133,7 +133,7 @@ export default function WorkPage() {
                     </div>
 
                     <div>
-                      <h3 className="mb-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white/60">
+                      <h3 className="mb-3 text-xs sm:text-sm font-semibold uppercase tracking-wide text-[#fde8d8]/60">
                         System
                       </h3>
                       <ul className="space-y-2">
@@ -150,7 +150,7 @@ export default function WorkPage() {
                     </div>
 
                     <div className="pt-2 border-t border-white/[0.08]">
-                      <h3 className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-white/60">
+                      <h3 className="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-wide text-[#fde8d8]/60">
                         Impact
                       </h3>
                       <p className="text-base leading-relaxed text-white font-medium">

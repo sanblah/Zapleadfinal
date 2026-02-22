@@ -233,7 +233,7 @@ export function Footer() {
             >
               <span
                 className="relative block text-[clamp(3rem,14vw,11rem)] font-bold tracking-[-0.04em]"
-                style={{ fontFamily: "var(--font-tinos), 'Times New Roman', serif" }}
+                style={{ fontFamily: "var(--font-dm-sans), system-ui, sans-serif" }}
               >
                 <span className="relative inline-block h-[1.2em] overflow-hidden leading-none align-top pr-[0.08em]">
                   <span className="invisible block h-[1.2em] leading-[1.2] whitespace-nowrap">

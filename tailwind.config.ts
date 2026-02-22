@@ -38,11 +38,11 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        display: ["var(--font-tinos)", "'Times New Roman'", "serif"],
-        body: ["var(--font-tinos)", "'Times New Roman'", "serif"],
-        sans: ["var(--font-tinos)", "'Times New Roman'", "serif"],
-        mono: ["var(--font-tinos)", "'Times New Roman'", "serif"],
-        heading: ["var(--font-tinos)", "'Times New Roman'", "serif"],
+        display: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        body: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        heading: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
       },
       animation: {
         first: "moveVertical 30s ease infinite",

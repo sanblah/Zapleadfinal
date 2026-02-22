@@ -30,7 +30,7 @@ export default function ContactPage() {
         <section className="border-b border-white/[0.1] py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white">
+              <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-[#fde8d8]">
                 Let&apos;s Build Your Pipeline
               </h1>
               <p className="text-lg sm:text-xl text-white/70 max-w-xl mx-auto font-light leading-relaxed">
