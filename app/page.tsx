@@ -80,25 +80,27 @@ export default function HomePage() {
 
             <AnimatedContent delay={0.6} duration={0.8} distance={30}>
               <div className="flex w-full flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row">
-                <Link href="/contact" className="w-full sm:w-auto">
-                  <Button
-                    size="lg"
-                    className="bg-white text-black hover:bg-white/90 hover:scale-105 px-8 sm:px-10 py-5 sm:py-6 text-lg sm:text-xl shadow-2xl rounded-full transition-all duration-300 w-full sm:w-auto"
-                  >
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-white text-black hover:bg-white/90 hover:scale-105 px-8 sm:px-10 py-5 sm:py-6 text-lg sm:text-xl shadow-2xl rounded-full transition-all duration-300 w-full sm:w-auto"
+                >
+                  <Link href="/contact" className="w-full sm:w-auto">
                     See It Work on Your Leads
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-                <Link href="/work" className="w-full sm:w-auto">
-                  <Button
-                    variant="glass"
-                    size="lg"
-                    className="text-white px-8 sm:px-10 py-5 sm:py-6 text-lg sm:text-xl rounded-full w-full sm:w-auto"
-                  >
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="glass"
+                  size="lg"
+                  className="text-white px-8 sm:px-10 py-5 sm:py-6 text-lg sm:text-xl rounded-full w-full sm:w-auto"
+                >
+                  <Link href="/work" className="w-full sm:w-auto">
                     Read 2 min demo
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </AnimatedContent>
           </div>
@@ -368,11 +370,11 @@ export default function HomePage() {
               </div>
 
               <div className="mt-12 text-center">
-                <Link href="/work">
-                  <Button variant="ghost" className="glass-button text-white px-8 py-6 text-lg">
+                <Button asChild variant="ghost" className="glass-button text-white px-8 py-6 text-lg">
+                  <Link href="/work">
                     See All Case Studies <ArrowRight className="h-4 w-4 ml-2" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </ScrollBlurReveal>
           </div>
@@ -438,11 +440,11 @@ export default function HomePage() {
                   <h3 className="mb-6 text-2xl sm:text-3xl font-bold text-[#fde8d8]">
                     Ready to 3x Your Bookings?
                   </h3>
-                  <Link href="/contact">
-                    <Button size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-105 px-10 py-6 text-xl shadow-2xl rounded-full transition-all duration-300">
+                  <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-105 px-10 py-6 text-xl shadow-2xl rounded-full transition-all duration-300">
+                    <Link href="/contact">
                       Get Your Free Pipeline Audit <ArrowRight className="h-5 w-5 ml-2" />
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </div>
               </AnimatedContent>
             </ScrollBlurReveal>

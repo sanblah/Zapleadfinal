@@ -70,6 +70,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   const colorTweenRef = useRef<gsap.core.Tween | null>(null);
 
   const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
   const busyRef = useRef(false);
 
   const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
@@ -347,12 +348,71 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     animateText(target);
   }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
 
+  React.useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel) {
+      return;
+    }
+
+    panel.inert = !open;
+
+    if (!open) {
+      return;
+    }
+
+    previousFocusRef.current = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const focusableElements = Array.from(
+      panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    );
+    focusableElements[0]?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        toggleMenu();
+        return;
+      }
+
+      if (event.key !== "Tab" || focusableElements.length === 0) {
+        return;
+      }
+
+      const first = focusableElements[0];
+      const last = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey && activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocusRef.current?.focus();
+    };
+  }, [open, toggleMenu]);
+
   return (
     <div
-      className={`sm-scope z-40 ${isFixed ? 'fixed top-0 left-0 w-screen h-screen overflow-hidden pointer-events-none' : 'w-full h-full pointer-events-none'}`}
+      className={`sm-scope z-[60] ${isFixed ? 'fixed top-0 left-0 w-screen h-screen overflow-hidden pointer-events-none' : 'w-full h-full pointer-events-none'}`}
     >
       <div
-        className={(className ? className + ' ' : '') + 'staggered-menu-wrapper relative w-full h-full z-40'}
+        className={(className ? className + ' ' : '') + 'staggered-menu-wrapper relative w-full h-full z-[60]'}
         style={accentColor ? ({ ['--sm-accent' as any]: accentColor } as React.CSSProperties) : undefined}
         data-position={position}
         data-open={open || undefined}
@@ -440,6 +500,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px]"
           style={{ WebkitBackdropFilter: 'blur(12px)' }}
           aria-hidden={!open}
+          aria-modal="true"
+          role="dialog"
         >
           <div className="sm-panel-inner flex-1 flex flex-col gap-5">
             <ul
@@ -456,6 +518,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
                       onClick={toggleMenu}
+                      tabIndex={open ? 0 : -1}
                     >
                       <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
                         {it.label}
@@ -488,6 +551,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="sm-socials-link text-[1.2rem] font-medium text-[#111] no-underline relative inline-block py-[2px] transition-[color,opacity] duration-300 ease-linear"
+                        tabIndex={open ? 0 : -1}
                       >
                         {s.label}
                       </a>
@@ -501,7 +565,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       </div>
 
       <style>{`
-.sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; pointer-events: none; }
+.sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 60; pointer-events: none; }
 .sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 2em; background: transparent; z-index: 20; pointer-events: auto; }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }

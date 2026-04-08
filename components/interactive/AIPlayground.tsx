@@ -159,6 +159,10 @@ const AIPlayground = () => {
                     {/* Messages */}
                     <div
                         ref={chatContainerRef}
+                        role="log"
+                        aria-live="polite"
+                        aria-relevant="additions text"
+                        aria-label="ZapLead AI conversation"
                         className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
                     >
                         <AnimatePresence initial={false}>
@@ -228,11 +232,13 @@ const AIPlayground = () => {
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 placeholder="Type a message..."
+                                aria-label="Type your message for ZapLead AI"
                                 className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-base sm:text-lg text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-orange-300/40 transition-all"
                             />
                             <button
                                 type="submit"
                                 disabled={!inputValue.trim() || isTyping}
+                                aria-label="Send message"
                                 className="absolute right-2 p-2 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all disabled:opacity-50 disabled:hover:bg-blue-600"
                             >
                                 <Send size={18} />

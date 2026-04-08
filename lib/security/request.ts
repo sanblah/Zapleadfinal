@@ -12,6 +12,19 @@ function normalizeOrigin(value: string): string | null {
   }
 }
 
+function getRequestOrigin(headers: HeaderReader): string | null {
+  const forwardedHost = headers.get("x-forwarded-host");
+  const host = forwardedHost ?? headers.get("host");
+  if (!host) {
+    return null;
+  }
+
+  const forwardedProto = headers.get("x-forwarded-proto");
+  const proto = forwardedProto ?? (host.includes("localhost") ? "http" : "https");
+
+  return normalizeOrigin(`${proto}://${host}`);
+}
+
 export function getAllowedOrigins(): Set<string> {
   const allowed = new Set<string>(DEV_ORIGINS);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
@@ -26,7 +39,10 @@ export function getAllowedOrigins(): Set<string> {
   return allowed;
 }
 
-export function isAllowedOrigin(originHeader: string | null): boolean {
+export function isAllowedOrigin(
+  originHeader: string | null,
+  headers?: HeaderReader
+): boolean {
   if (!originHeader) {
     return process.env.NODE_ENV !== "production";
   }
@@ -36,7 +52,15 @@ export function isAllowedOrigin(originHeader: string | null): boolean {
     return false;
   }
 
-  return getAllowedOrigins().has(normalized);
+  if (getAllowedOrigins().has(normalized)) {
+    return true;
+  }
+
+  if (!headers) {
+    return false;
+  }
+
+  return getRequestOrigin(headers) === normalized;
 }
 
 export function isCrossSiteBrowserRequest(headers: HeaderReader): boolean {
@@ -45,7 +69,13 @@ export function isCrossSiteBrowserRequest(headers: HeaderReader): boolean {
 }
 
 export function getClientIp(headers: HeaderReader): string {
-  const forwarded = headers.get("x-forwarded-for");
+  const platformHeaders = [
+    headers.get("cf-connecting-ip"),
+    headers.get("x-vercel-forwarded-for"),
+    headers.get("x-forwarded-for"),
+  ];
+
+  const forwarded = platformHeaders.find(Boolean);
   if (forwarded) {
     const ip = forwarded.split(",")[0]?.trim();
     if (ip) {
@@ -53,11 +83,10 @@ export function getClientIp(headers: HeaderReader): string {
     }
   }
 
-  const realIp = headers.get("x-real-ip");
+  const realIp = headers.get("x-real-ip")?.trim();
   if (realIp) {
     return realIp;
   }
 
   return "unknown";
 }
-

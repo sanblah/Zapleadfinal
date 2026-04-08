@@ -1,7 +1,12 @@
-"use client";
-
+import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+
+export const metadata: Metadata = {
+  title: "Contact ZapLead",
+  description:
+    "Tell ZapLead about your pipeline and get a custom AI lead automation plan.",
+};
 
 export default function ContactPage() {
   return (

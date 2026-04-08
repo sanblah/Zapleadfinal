@@ -1,5 +1,6 @@
 
 import { DM_Sans } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { StaggeredMenu } from "@/components/StaggeredMenu";
 import { Footer } from "@/components/footer";
@@ -15,15 +16,10 @@ const dmSans = DM_Sans({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://zaplead.in"),
   title: "ZapLead - AI Lead Pipeline Automation",
   description: "Turn leads into revenue with AI agents that capture, qualify, and book meetings 24/7. 92% conversion rate.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    viewportFit: "cover" as const,
-  },
   icons: {
     icon: "/Zapleadlogo.png",
     shortcut: "/Zapleadlogo.png",
@@ -36,6 +32,12 @@ export const metadata = {
     locale: "en_US",
     siteName: "ZapLead",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

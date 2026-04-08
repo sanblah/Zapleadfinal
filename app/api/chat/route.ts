@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sanitizeText } from "@/lib/security/input";
+import { BodySizeLimitError, readJsonBody } from "@/lib/security/json";
 import { getClientIp, isAllowedOrigin, isCrossSiteBrowserRequest } from "@/lib/security/request";
 import { rateLimit } from "@/lib/security/rate-limit";
 
@@ -35,6 +36,7 @@ const CHAT_RATE_LIMIT = { windowMs: 60_000, max: 30 };
 const MAX_MESSAGE_LENGTH = 2_000;
 const MAX_HISTORY_ITEMS = 20;
 const MAX_HISTORY_TEXT_LENGTH = 1_000;
+const MAX_REQUEST_BODY_BYTES = 16_384;
 const ANTHROPIC_TIMEOUT_MS = 15_000;
 const ANTHROPIC_MAX_RETRIES = 3;
 
@@ -133,7 +135,10 @@ function delay(ms: number) {
 
 export async function POST(req: Request) {
   try {
-    if (!isAllowedOrigin(req.headers.get("origin")) || isCrossSiteBrowserRequest(req.headers)) {
+    if (
+      !isAllowedOrigin(req.headers.get("origin"), req.headers) ||
+      isCrossSiteBrowserRequest(req.headers)
+    ) {
       return jsonNoStore({ error: "Forbidden request origin." }, 403);
     }
 
@@ -150,8 +155,11 @@ export async function POST(req: Request) {
 
     let body: unknown;
     try {
-      body = await req.json();
-    } catch {
+      body = await readJsonBody(req, MAX_REQUEST_BODY_BYTES);
+    } catch (error) {
+      if (error instanceof BodySizeLimitError) {
+        return jsonNoStore({ error: "Request payload is too large." }, 413);
+      }
       return jsonNoStore({ error: "Invalid JSON payload." }, 400);
     }
 

@@ -1,6 +1,10 @@
 "use server";
 
 import { headers } from "next/headers";
+import {
+  ContactDeliveryError,
+  deliverContactSubmission,
+} from "@/lib/contact/delivery";
 import { isValidEmail, sanitizeText } from "@/lib/security/input";
 import { getClientIp, isAllowedOrigin, isCrossSiteBrowserRequest } from "@/lib/security/request";
 import { rateLimit } from "@/lib/security/rate-limit";
@@ -47,7 +51,10 @@ export async function submitContactForm(
 ): Promise<FormResult> {
   const headerStore = await headers();
 
-  if (!isAllowedOrigin(headerStore.get("origin")) || isCrossSiteBrowserRequest(headerStore)) {
+  if (
+    !isAllowedOrigin(headerStore.get("origin"), headerStore) ||
+    isCrossSiteBrowserRequest(headerStore)
+  ) {
     return {
       success: false,
       message: "Request blocked. Please refresh and try again.",
@@ -75,6 +82,7 @@ export async function submitContactForm(
   const currentTools = readField(formData, "currentTools", CURRENT_TOOLS_MAX);
   const industry = readField(formData, "industry", 40);
   const details = readField(formData, "details", DETAILS_MAX);
+  const emailDomain = email.split("@")[1] ?? "unknown";
 
   if (!name || !email || !company || !industry) {
     return {
@@ -98,12 +106,26 @@ export async function submitContactForm(
   }
 
   try {
-    // Keep responses consistent while backend integrations are added.
-    await new Promise((resolve) => setTimeout(resolve, 250));
+    await deliverContactSubmission(
+      {
+        name,
+        email,
+        company,
+        currentTools,
+        industry,
+        details,
+        submittedAt: new Date().toISOString(),
+        emailDomain,
+      },
+      {
+        nodeEnv: process.env.NODE_ENV,
+        webhookUrl: process.env.CONTACT_WEBHOOK_URL,
+      }
+    );
 
     // Avoid logging direct PII in server logs.
     console.info("Contact form accepted", {
-      emailDomain: email.split("@")[1] ?? "unknown",
+      emailDomain,
       industry,
       company,
       hasDetails: details.length > 0,
@@ -112,6 +134,20 @@ export async function submitContactForm(
 
     return successResponse();
   } catch (error) {
+    if (
+      error instanceof ContactDeliveryError &&
+      error.code === "missing_configuration"
+    ) {
+      console.error("Contact form misconfiguration", {
+        error: error.message,
+      });
+      return {
+        success: false,
+        message:
+          "Contact delivery is not configured yet. Please email us at aizaplead@gmail.com for now.",
+      };
+    }
+
     console.error("Form submission error", {
       error: error instanceof Error ? error.message : "Unknown error",
     });

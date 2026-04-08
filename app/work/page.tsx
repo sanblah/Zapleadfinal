@@ -1,8 +1,13 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+
+export const metadata: Metadata = {
+  title: "ZapLead Case Studies",
+  description:
+    "See how ZapLead improves response speed, lead qualification, and bookings across real businesses.",
+};
 
 interface CaseStudy {
   id: string;
@@ -31,7 +36,7 @@ const caseStudies: CaseStudy[] = [
       "Structured handoff for future expansion",
     ],
     impact:
-      "**Reduced manual workload, faster customer response times, structured and analyzable pre-sales data, and a scalable communication infrastructure.** Marathon Realty transitioned from manual processes to an AI-driven, automation-first workflow.",
+      "Reduced manual workload, faster customer response times, structured and analyzable pre-sales data, and a scalable communication infrastructure. Marathon Realty transitioned from manual processes to an AI-driven, automation-first workflow.",
   },
 ];
 

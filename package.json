@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "node --import tsx --test",
     "typecheck": "tsc --noEmit",
     "security:audit": "npm audit --omit=dev --audit-level=high",
     "security:check": "npm run lint && npm run typecheck && npm run security:audit"
@@ -41,6 +42,7 @@
     "postcss": "^8.4.49",
     "shadcn": "^3.5.0",
     "tailwindcss": "^3.4.15",
+    "tsx": "^4.20.6",
     "typescript": "5.9.3"
   }
 }
