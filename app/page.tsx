@@ -17,8 +17,8 @@ import { BackgroundGradientAnimation } from "@/components/ui/background-gradient
 
 const selectedWork = [
   {
-    href: "/work#confidential-bakery-whatsapp-agent",
-    title: "Confidential Bakery Client",
+    href: "/work#bonnies-bakery-whatsapp-agent",
+    title: "Bonnies Bakery",
     meta: "WhatsApp ordering agent + owner dashboard",
     tags: ["WhatsApp AI", "Rista POS", "Razorpay"],
     description:

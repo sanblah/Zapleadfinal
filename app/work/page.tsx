@@ -29,16 +29,16 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    id: "confidential-bakery-whatsapp-agent",
-    company: "Confidential Bakery Client",
+    id: "bonnies-bakery-whatsapp-agent",
+    company: "Bonnies Bakery",
     industry: "Bakery / WhatsApp Ordering",
     status: "Live in production",
     timeframe: "Two-month production window: Apr 4-Jun 4, 2026",
     tags: ["WhatsApp AI", "Twilio", "Supabase", "Rista POS", "Razorpay", "Owner Dashboard"],
     summary:
-      "A production WhatsApp ordering assistant and owner dashboard for a Mulund bakery client, built to answer product questions, check live stock, take prepaid orders, and give the owner a live control room.",
+      "A production WhatsApp ordering assistant and owner dashboard for Bonnies Bakery in Mulund, built to answer product questions, check live stock, take prepaid orders, and give the owner a live control room.",
     problem:
-      "The client's customers already ordered through WhatsApp, but the channel depended on fast human replies during rushes, after hours, and across Hindi, English, Marathi, and Hinglish. Routine questions about stock, price, delivery, and payment consumed owner time, while slow replies or wrong information risked lost orders.",
+      "Bonnies Bakery's customers already ordered through WhatsApp, but the channel depended on fast human replies during rushes, after hours, and across Hindi, English, Marathi, and Hinglish. Routine questions about stock, price, delivery, and payment consumed owner time, while slow replies or wrong information risked lost orders.",
     system: [
       "Node.js + TypeScript Express backend receiving Twilio WhatsApp webhooks",
       "10-second message buffer so fragmented customer messages are interpreted together",
