@@ -145,7 +145,7 @@ function getAssistantText(data: unknown): string {
   if (!outputText) {
     return "Sorry, I couldn't generate a response.";
   }
-  return sanitizeText(outputText, 4_000);
+  return sanitizeText(outputText, 4_000).replace(/([.!?])(?=[A-Z])/g, "$1 ");
 }
 
 function buildConversationInput(payload: { message: string; history: HistoryItem[] }) {
