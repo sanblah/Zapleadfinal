@@ -9,8 +9,15 @@ type Message = {
     id: string;
     role: "user" | "ai";
     text: string;
-    timestamp: Date;
+    timestamp: string;
 };
+
+const formatTimeLabel = () =>
+    new Date().toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+    });
 
 const AIPlayground = () => {
     const [messages, setMessages] = useState<Message[]>([
@@ -18,7 +25,7 @@ const AIPlayground = () => {
             id: "welcome",
             role: "ai",
             text: "Hi! I'm the ZapLead Agent. I qualify leads instantly. Try me! Ask about pricing, booking a demo, or how I work.",
-            timestamp: new Date(),
+            timestamp: "Now",
         },
     ]);
     const [inputValue, setInputValue] = useState("");
@@ -43,7 +50,7 @@ const AIPlayground = () => {
             id: Date.now().toString(),
             role: "user",
             text: inputValue,
-            timestamp: new Date(),
+            timestamp: formatTimeLabel(),
         };
 
         setMessages((prev) => [...prev, userMsg]);
@@ -76,7 +83,7 @@ const AIPlayground = () => {
                 id: (Date.now() + 1).toString(),
                 role: "ai",
                 text: data.response,
-                timestamp: new Date(),
+                timestamp: formatTimeLabel(),
             };
             setMessages((prev) => [...prev, aiMsg]);
         } catch (error) {
@@ -85,7 +92,7 @@ const AIPlayground = () => {
                 id: (Date.now() + 1).toString(),
                 role: "ai",
                 text: "I'm having trouble connecting to my brain right now. Please check if the API key is set correctly.",
-                timestamp: new Date(),
+                timestamp: formatTimeLabel(),
             };
             setMessages((prev) => [...prev, errorMsg]);
         } finally {
@@ -197,7 +204,7 @@ const AIPlayground = () => {
                                             "text-xs mt-1 opacity-50",
                                             msg.role === "ai" ? "text-orange-200" : "text-black/60"
                                         )}>
-                                            {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                            {msg.timestamp}
                                         </div>
                                     </div>
                                 </motion.div>

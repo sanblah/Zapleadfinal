@@ -10,9 +10,10 @@ const contentSecurityPolicy = [
   "object-src 'none'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
-  "script-src 'self' 'unsafe-inline'" + (isProduction ? "" : " 'unsafe-eval'"),
+  "script-src 'self' 'unsafe-inline' https://assets.apollo.io https://d-code.liadm.com" + (isProduction ? "" : " 'unsafe-eval'"),
   "style-src 'self' 'unsafe-inline'",
-  "connect-src 'self'",
+  "connect-src 'self' https://aplo-evnt.com https://i.liadm.com https://idx.liadm.com https://rp.liadm.com https://rpr.liadm.com",
+  "frame-src 'self' https://i.liadm.com",
   isProduction ? "upgrade-insecure-requests" : "",
 ]
   .filter(Boolean)

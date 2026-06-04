@@ -1,8 +1,10 @@
-import React, { useRef, useEffect, ReactNode } from 'react';
+import React, { ReactNode, useEffect, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 interface AnimatedContentProps {
   children: ReactNode;
@@ -34,19 +36,20 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
   onComplete
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const axis = direction === 'horizontal' ? 'x' : 'y';
+  const offset = reverse ? -distance : distance;
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    const axis = direction === 'horizontal' ? 'x' : 'y';
-    const offset = reverse ? -distance : distance;
     const startPct = (1 - threshold) * 100;
 
     gsap.set(el, {
       [axis]: offset,
       scale,
-      opacity: animateOpacity ? initialOpacity : 1
+      opacity: animateOpacity ? initialOpacity : 1,
+      willChange: 'transform, opacity',
     });
 
     const tween = gsap.to(el, {
@@ -56,7 +59,10 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
       duration,
       ease,
       delay,
-      onComplete,
+      onComplete: () => {
+        gsap.set(el, { clearProps: 'willChange' });
+        onComplete?.();
+      },
       scrollTrigger: {
         trigger: el,
         start: `top ${startPct}%`,
@@ -71,9 +77,8 @@ const AnimatedContent: React.FC<AnimatedContentProps> = ({
       gsap.killTweensOf(el);
     };
   }, [
-    distance,
-    direction,
-    reverse,
+    axis,
+    offset,
     duration,
     ease,
     initialOpacity,

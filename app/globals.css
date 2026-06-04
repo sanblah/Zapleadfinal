@@ -42,12 +42,21 @@
 }
 
 @layer base {
+  html {
+    font-size: 90%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: var(--font-dm-sans), system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -355,6 +364,11 @@
 .marquee-container:hover .marquee-track-left,
 .marquee-container:hover .marquee-track-right {
   animation-play-state: paused;
+}
+
+.marquee-container {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
 /* Logo card hover effects */

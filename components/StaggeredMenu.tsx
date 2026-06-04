@@ -579,11 +579,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-icon { position: relative; width: 14px; height: 14px; flex: 0 0 14px; display: inline-flex; align-items: center; justify-content: center; will-change: transform; }
 .sm-scope .sm-panel-itemWrap { position: relative; overflow: hidden; line-height: 1; }
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform; }
+.sm-scope .sm-icon-line-v { transform: translate(-50%, -50%) rotate(90deg); }
 .sm-scope .sm-line { display: none !important; }
 .sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: white; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6em 2em 2em 2em; overflow-y: auto; z-index: 10; pointer-events: none; }
 .sm-scope [data-position='left'] .staggered-menu-panel { right: auto; left: 0; }
 .sm-scope .sm-prelayers { position: absolute; top: 0; right: 0; bottom: 0; width: clamp(260px, 38vw, 420px); pointer-events: none; z-index: 5; }
 .sm-scope [data-position='left'] .sm-prelayers { right: auto; left: 0; }
+.sm-scope .staggered-menu-wrapper:not([data-open]) .staggered-menu-panel,
+.sm-scope .staggered-menu-wrapper:not([data-open]) .sm-prelayer { transform: translateX(100%); }
+.sm-scope .staggered-menu-wrapper:not([data-open])[data-position='left'] .staggered-menu-panel,
+.sm-scope .staggered-menu-wrapper:not([data-open])[data-position='left'] .sm-prelayer { transform: translateX(-100%); }
 .sm-scope .staggered-menu-wrapper[data-open] .staggered-menu-panel,
 .sm-scope .staggered-menu-wrapper[data-open] .sm-prelayers { pointer-events: auto; }
 .sm-scope .sm-prelayer { position: absolute; top: 0; right: 0; height: 100%; width: 100%; transform: translateX(0); }

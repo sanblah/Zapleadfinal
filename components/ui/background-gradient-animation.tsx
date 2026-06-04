@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 
 export const BackgroundGradientAnimation = ({
     gradientBackgroundStart = "rgb(108, 0, 162)",
@@ -37,39 +37,24 @@ export const BackgroundGradientAnimation = ({
     const currentPositionRef = useRef({ x: 0, y: 0 });
     const targetPositionRef = useRef({ x: 0, y: 0 });
     const animationFrameRef = useRef<number | null>(null);
+    const gradientVariables = {
+        "--gradient-background-start": gradientBackgroundStart,
+        "--gradient-background-end": gradientBackgroundEnd,
+        "--first-color": firstColor,
+        "--second-color": secondColor,
+        "--third-color": thirdColor,
+        "--fourth-color": fourthColor,
+        "--fifth-color": fifthColor,
+        "--pointer-color": pointerColor,
+        "--size": size,
+        "--blending-value": blendingValue,
+    } as CSSProperties;
 
-    useEffect(() => {
-        document.body.style.setProperty(
-            "--gradient-background-start",
-            gradientBackgroundStart
-        );
-        document.body.style.setProperty(
-            "--gradient-background-end",
-            gradientBackgroundEnd
-        );
-        document.body.style.setProperty("--first-color", firstColor);
-        document.body.style.setProperty("--second-color", secondColor);
-        document.body.style.setProperty("--third-color", thirdColor);
-        document.body.style.setProperty("--fourth-color", fourthColor);
-        document.body.style.setProperty("--fifth-color", fifthColor);
-        document.body.style.setProperty("--pointer-color", pointerColor);
-        document.body.style.setProperty("--size", size);
-        document.body.style.setProperty("--blending-value", blendingValue);
-    }, [
-        blendingValue,
-        fifthColor,
-        firstColor,
-        fourthColor,
-        gradientBackgroundEnd,
-        gradientBackgroundStart,
-        pointerColor,
-        secondColor,
-        size,
-        thirdColor,
-    ]);
-
-    useEffect(() => {
+    const startPointerAnimation = () => {
         if (!interactive) {
+            return;
+        }
+        if (animationFrameRef.current !== null) {
             return;
         }
 
@@ -81,22 +66,34 @@ export const BackgroundGradientAnimation = ({
 
             const current = currentPositionRef.current;
             const target = targetPositionRef.current;
+            const deltaX = target.x - current.x;
+            const deltaY = target.y - current.y;
 
-            current.x += (target.x - current.x) / 20;
-            current.y += (target.y - current.y) / 20;
+            current.x += deltaX / 20;
+            current.y += deltaY / 20;
 
-            node.style.transform = `translate(${Math.round(current.x)}px, ${Math.round(
+            node.style.transform = `translate3d(${Math.round(current.x)}px, ${Math.round(
                 current.y
-            )}px)`;
+            )}px, 0)`;
+
+            if (Math.abs(deltaX) < 0.5 && Math.abs(deltaY) < 0.5) {
+                current.x = target.x;
+                current.y = target.y;
+                animationFrameRef.current = null;
+                return;
+            }
 
             animationFrameRef.current = requestAnimationFrame(move);
         };
 
         animationFrameRef.current = requestAnimationFrame(move);
+    };
 
+    useEffect(() => {
         return () => {
             if (animationFrameRef.current !== null) {
                 cancelAnimationFrame(animationFrameRef.current);
+                animationFrameRef.current = null;
             }
         };
     }, [interactive]);
@@ -108,6 +105,7 @@ export const BackgroundGradientAnimation = ({
                 x: event.clientX - rect.left,
                 y: event.clientY - rect.top,
             };
+            startPointerAnimation();
         }
     };
 
@@ -122,6 +120,7 @@ export const BackgroundGradientAnimation = ({
                 "h-screen w-screen relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
                 containerClassName
             )}
+            style={gradientVariables}
         >
             <svg className="hidden">
                 <defs>
@@ -152,7 +151,7 @@ export const BackgroundGradientAnimation = ({
                     className={cn(
                         `absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0,_var(--first-color)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-                        `[transform-origin:center_center]`,
+                        `[transform-origin:center_center] will-change-transform`,
                         `animate-first`,
                         `opacity-100`
                     )}
@@ -161,7 +160,7 @@ export const BackgroundGradientAnimation = ({
                     className={cn(
                         `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-                        `[transform-origin:calc(50%-400px)]`,
+                        `[transform-origin:calc(50%-400px)] will-change-transform`,
                         `animate-second`,
                         `opacity-100`
                     )}
@@ -170,7 +169,7 @@ export const BackgroundGradientAnimation = ({
                     className={cn(
                         `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-                        `[transform-origin:calc(50%+400px)]`,
+                        `[transform-origin:calc(50%+400px)] will-change-transform`,
                         `animate-third`,
                         `opacity-100`
                     )}
@@ -179,7 +178,7 @@ export const BackgroundGradientAnimation = ({
                     className={cn(
                         `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-                        `[transform-origin:calc(50%-200px)]`,
+                        `[transform-origin:calc(50%-200px)] will-change-transform`,
                         `animate-fourth`,
                         `opacity-70`
                     )}
@@ -188,7 +187,7 @@ export const BackgroundGradientAnimation = ({
                     className={cn(
                         `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-                        `[transform-origin:calc(50%-800px)_calc(50%+800px)]`,
+                        `[transform-origin:calc(50%-800px)_calc(50%+800px)] will-change-transform`,
                         `animate-fifth`,
                         `opacity-100`
                     )}
@@ -201,7 +200,7 @@ export const BackgroundGradientAnimation = ({
                         className={cn(
                             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
                             `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
-                            `opacity-70`
+                            `opacity-70 will-change-transform`
                         )}
                     ></div>
                 )}

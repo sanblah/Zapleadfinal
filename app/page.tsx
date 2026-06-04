@@ -15,6 +15,35 @@ import AIPlayground from "@/components/interactive/AIPlayground";
 import LogosMarquee from "@/components/LogosMarquee";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
+const selectedWork = [
+  {
+    href: "/work#confidential-bakery-whatsapp-agent",
+    title: "Confidential Bakery Client",
+    meta: "WhatsApp ordering agent + owner dashboard",
+    tags: ["WhatsApp AI", "Rista POS", "Razorpay"],
+    description:
+      "A production bakery assistant that checks stock, answers customers, creates payment links, and gives the owner a live dashboard for chat takeover and analytics.",
+    result: "20,123 messages • 1,248 active customers • 87 completed paid orders across 2 months",
+  },
+  {
+    href: "/work#zapreach-os-whatsapp-agent-platform",
+    title: "ZapReach OS",
+    meta: "Multi-tenant WhatsApp agent platform",
+    tags: ["Agent Platform", "Tenant Runtime", "Encrypted Integrations"],
+    description:
+      "The reusable operating layer for launching business-specific WhatsApp agents from menus, brochures, integrations, and tenant-safe runtime configuration.",
+    result: "5-step onboarding • multi-tenant runtime • usage and billing telemetry",
+  },
+  {
+    href: "/work#marathon-realty-automation",
+    title: "Marathon Realty",
+    meta: "Pre-sales automation and AI analysis",
+    tags: ["Real Estate", "n8n", "WATI"],
+    description:
+      "Workflow automation for pre-sales transcripts, WhatsApp communication, AI analysis, and scalable handoff across high-volume inquiry flows.",
+    result: "Reduced manual workload • faster response times • analyzable pre-sales data",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -173,7 +202,7 @@ export default function HomePage() {
         <LogosMarquee />
 
         {/* How It Works Section */}
-        <section className="py-16 sm:py-32">
+        <section className="pt-14 pb-10 sm:pt-24 sm:pb-14">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
               <div className="mb-20 text-center">
@@ -256,8 +285,82 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Selected Work Section */}
+        <section className="pt-10 pb-12 sm:pt-14 sm:pb-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <ScrollBlurReveal>
+              <div className="mb-10 sm:mb-12 text-center">
+                <AnimatedContent delay={0} duration={0.8}>
+                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
+                    <DecryptedText
+                      text="Real Results, Real Numbers"
+                      animateOn="view"
+                      sequential={true}
+                      revealDirection="start"
+                      speed={80}
+                      className="text-white"
+                      encryptedClassName="text-white/40"
+                    />
+                  </h2>
+                </AnimatedContent>
+                <AnimatedContent delay={0.2} duration={0.8}>
+                  <p className="text-xl sm:text-2xl text-white/70">
+                    Production systems we have built for WhatsApp ordering, AI automation, and repeatable agent deployment.
+                  </p>
+                </AnimatedContent>
+              </div>
+            </ScrollBlurReveal>
+
+            <ScrollBlurReveal>
+              <div className="grid gap-6 lg:grid-cols-3">
+                {selectedWork.map((work, index) => (
+                  <AnimatedContent key={work.href} delay={index * 0.15} duration={0.8} distance={50}>
+                    <SpotlightCard className="h-full" spotlightColor="rgba(124, 58, 237, 0.3)">
+                      <Card className="glass-card liquid-shine h-full transform-gpu">
+                        <CardHeader>
+                          <div className="mb-3 flex flex-wrap gap-2">
+                            {work.tags.map((tag) => (
+                              <Badge key={tag} variant="outline" className="w-fit glass-badge text-white text-xs">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </div>
+                          <CardTitle className="text-white text-2xl">{work.title}</CardTitle>
+                          <p className="mt-1 text-sm text-white/60">{work.meta}</p>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                          <p className="text-base sm:text-lg text-white/70 leading-relaxed">
+                            {work.description}
+                          </p>
+                          <p className="text-base sm:text-lg text-white font-medium">
+                            {work.result}
+                          </p>
+                          <Link
+                            href={work.href}
+                            className="inline-flex items-center gap-2 text-sm text-white font-medium transition-all hover:gap-3"
+                          >
+                            View case <ArrowRight className="h-3 w-3" />
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    </SpotlightCard>
+                  </AnimatedContent>
+                ))}
+              </div>
+
+              <div className="mt-10 text-center">
+                <Button asChild variant="ghost" className="glass-button text-white px-8 py-6 text-lg">
+                  <Link href="/work">
+                    See All Case Studies <ArrowRight className="h-4 w-4 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </ScrollBlurReveal>
+          </div>
+        </section>
+
         {/* What's Inside Section */}
-        <section className="py-16 sm:py-24">
+        <section className="pt-10 pb-16 sm:pt-14 sm:pb-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <ScrollBlurReveal>
               <div className="mb-16 text-center">
@@ -299,82 +402,6 @@ export default function HomePage() {
                     ))}
                   </ul>
                 </div>
-              </div>
-            </ScrollBlurReveal>
-          </div>
-        </section>
-
-        {/* Selected Work Section */}
-        <section className="py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <ScrollBlurReveal>
-              <div className="mb-16 text-center">
-                <AnimatedContent delay={0} duration={0.8}>
-                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
-                    <DecryptedText
-                      text="Real Results, Real Numbers"
-                      animateOn="view"
-                      sequential={true}
-                      revealDirection="start"
-                      speed={80}
-                      className="text-white"
-                      encryptedClassName="text-white/40"
-                    />
-                  </h2>
-                </AnimatedContent>
-                <AnimatedContent delay={0.2} duration={0.8}>
-                  <p className="text-xl sm:text-2xl text-white/70">
-                    See how Indian businesses are booking 3x more meetings with zero extra headcount.
-                  </p>
-                </AnimatedContent>
-              </div>
-            </ScrollBlurReveal>
-
-            <ScrollBlurReveal>
-              <div className="max-w-2xl mx-auto">
-                <AnimatedContent delay={0} duration={0.8} distance={50}>
-                  <SpotlightCard className="h-full" spotlightColor="rgba(124, 58, 237, 0.3)">
-                    <Card className="glass-card liquid-shine h-full transform-gpu">
-                      <CardHeader>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          <Badge variant="outline" className="w-fit glass-badge text-white text-xs">
-                            Real Estate
-                          </Badge>
-                          <Badge variant="outline" className="w-fit glass-badge text-white text-xs">
-                            n8n Automation
-                          </Badge>
-                          <Badge variant="outline" className="w-fit glass-badge text-white text-xs">
-                            WhatsApp
-                          </Badge>
-                        </div>
-                        <CardTitle className="text-white text-2xl">Marathon Realty</CardTitle>
-                        <p className="text-sm text-white/60 mt-1">Implementation Partner: Zaplead Solutions</p>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <p className="text-base sm:text-lg text-white/70 leading-relaxed">
-                          Modernized pre-sales operations through workflow automation and AI-driven analysis—reducing manual effort, improving response times, and building a scalable system for customer interactions.
-                        </p>
-                        <p className="text-base sm:text-lg text-white font-medium">
-                          Reduced manual workload • Faster response times • Scalable AI-driven workflow
-                        </p>
-                        <Link
-                          href="/work#marathon-realty-automation"
-                          className="inline-flex items-center gap-2 text-sm text-white font-medium transition-all hover:gap-3"
-                        >
-                          View case <ArrowRight className="h-3 w-3" />
-                        </Link>
-                      </CardContent>
-                    </Card>
-                  </SpotlightCard>
-                </AnimatedContent>
-              </div>
-
-              <div className="mt-12 text-center">
-                <Button asChild variant="ghost" className="glass-button text-white px-8 py-6 text-lg">
-                  <Link href="/work">
-                    See All Case Studies <ArrowRight className="h-4 w-4 ml-2" />
-                  </Link>
-                </Button>
               </div>
             </ScrollBlurReveal>
           </div>

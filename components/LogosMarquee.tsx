@@ -141,7 +141,7 @@ interface LogoCardProps {
 function LogoCard({ integration, index }: LogoCardProps) {
     return (
         <div
-            className="logo-card group relative flex-shrink-0 mx-3"
+            className="logo-card group relative flex-shrink-0 mx-2 sm:mx-3"
             style={{ animationDelay: `${index * 0.1}s` }}
         >
             <div
@@ -196,23 +196,23 @@ export default function LogosMarquee() {
     const marqueeItems = [...integrations, ...integrations];
 
     return (
-        <section className="py-16 sm:py-24 relative overflow-hidden">
+        <section className="relative overflow-x-clip py-12 sm:py-16 lg:py-20">
             {/* Background glow */}
             <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10" ref={containerRef}>
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10" ref={containerRef}>
                 <ScrollBlurReveal>
                     {/* Section Header */}
-                    <div className="mb-10 sm:mb-16 text-center">
+                    <div className="mb-8 sm:mb-12 text-center">
                         <AnimatedContent delay={0} duration={0.8}>
-                            <Badge variant="outline" className="mb-4 sm:mb-6 glass-badge text-purple-300 border-purple-500/30 px-4 py-1.5">
+                            <Badge variant="outline" className="mb-4 sm:mb-5 glass-badge text-purple-300 border-purple-500/30 px-4 py-1.5">
                                 <Sparkles className="h-3 w-3 mr-2 animate-pulse" />
                                 Universal Connectivity
                             </Badge>
                         </AnimatedContent>
                         <AnimatedContent delay={0.2} duration={0.8}>
-                            <h2 className="mb-4 sm:mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+                            <h2 className="mb-4 sm:mb-5 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
                                 <DecryptedText
                                     text="We Can Help You Connect Anything"
                                     animateOn="view"
@@ -231,25 +231,23 @@ export default function LogosMarquee() {
                         </AnimatedContent>
                     </div>
                 </ScrollBlurReveal>
+            </div>
 
-                {/* Single Marquee Row */}
-                <div className="relative">
-                    {/* Edge fades */}
-                    <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 z-10 bg-gradient-to-r from-[#000510] to-transparent pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 z-10 bg-gradient-to-l from-[#000510] to-transparent pointer-events-none" />
-
-                    <div className="marquee-container overflow-hidden">
-                        <div className="marquee-track-left flex py-4">
-                            {marqueeItems.map((integration, index) => (
-                                <LogoCard key={`marquee-${index}`} integration={integration} index={index} />
-                            ))}
-                        </div>
+            {/* Single Marquee Row */}
+            <div className="relative z-10 left-1/2 w-screen -translate-x-1/2">
+                <div className="marquee-container w-screen overflow-hidden py-2 sm:py-3">
+                    <div className="marquee-track-left flex py-3 sm:py-4">
+                        {marqueeItems.map((integration, index) => (
+                            <LogoCard key={`marquee-${index}`} integration={integration} index={index} />
+                        ))}
                     </div>
                 </div>
+            </div>
 
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
                 {/* Stats */}
                 <AnimatedContent delay={0.6} duration={0.8}>
-                    <div className="mt-10 sm:mt-16 flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-16">
+                    <div className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-14">
                         {[
                             { value: "50+", label: "Integrations" },
                             { value: "3-4 Weeks", label: "Setup Time" },
