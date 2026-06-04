@@ -107,6 +107,38 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     return () => ctx.revert();
   }, [menuButtonColor, position]);
 
+  useLayoutEffect(() => {
+    const button = toggleBtnRef.current;
+    if (!button) return;
+
+    const probe = document.createElement('span');
+    const buttonStyles = getComputedStyle(button);
+
+    probe.style.position = 'absolute';
+    probe.style.visibility = 'hidden';
+    probe.style.pointerEvents = 'none';
+    probe.style.whiteSpace = 'nowrap';
+    probe.style.font = buttonStyles.font;
+    probe.style.fontSize = buttonStyles.fontSize;
+    probe.style.fontWeight = buttonStyles.fontWeight;
+    probe.style.letterSpacing = buttonStyles.letterSpacing;
+    probe.style.lineHeight = buttonStyles.lineHeight;
+
+    document.body.appendChild(probe);
+
+    const widestLabel = ['Menu', 'Close'].reduce((maxWidth, label) => {
+      probe.textContent = label;
+      return Math.max(maxWidth, probe.getBoundingClientRect().width);
+    }, 0);
+
+    document.body.removeChild(probe);
+    button.style.setProperty('--sm-toggle-width', `${Math.ceil(widestLabel)}px`);
+
+    return () => {
+      button.style.removeProperty('--sm-toggle-width');
+    };
+  }, []);
+
   const buildOpenTimeline = useCallback(() => {
     const panel = panelRef.current;
     const layers = preLayerElsRef.current;
@@ -306,16 +338,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     const currentLabel = opening ? 'Menu' : 'Close';
     const targetLabel = opening ? 'Close' : 'Menu';
-    const cycles = 3;
-
-    const seq: string[] = [currentLabel];
-    let last = currentLabel;
-    for (let i = 0; i < cycles; i++) {
-      last = last === 'Menu' ? 'Close' : 'Menu';
-      seq.push(last);
-    }
-    if (last !== targetLabel) seq.push(targetLabel);
-    seq.push(targetLabel);
+    const seq: string[] = [currentLabel, targetLabel];
 
     setTextLines(seq);
     gsap.set(inner, { yPercent: 0 });
@@ -325,8 +348,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     textCycleAnimRef.current = gsap.to(inner, {
       yPercent: -finalShift,
-      duration: 0.5 + lineCount * 0.07,
-      ease: 'power4.out'
+      duration: 0.28,
+      ease: 'power3.out'
     });
   }, []);
 
@@ -372,7 +395,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
       )
     );
-    focusableElements[0]?.focus();
+    focusableElements[0]?.focus({ preventScroll: true });
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -391,10 +414,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
       if (event.shiftKey && activeElement === first) {
         event.preventDefault();
-        last.focus();
+        last.focus({ preventScroll: true });
       } else if (!event.shiftKey && activeElement === last) {
         event.preventDefault();
-        first.focus();
+        first.focus({ preventScroll: true });
       }
     };
 
@@ -403,7 +426,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = previousOverflow;
-      previousFocusRef.current?.focus();
+      previousFocusRef.current?.focus({ preventScroll: true });
     };
   }, [open, toggleMenu]);
 
@@ -412,7 +435,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       className={`sm-scope z-[60] ${isFixed ? 'fixed top-0 left-0 w-screen h-screen overflow-hidden pointer-events-none' : 'w-full h-full pointer-events-none'}`}
     >
       <div
-        className={(className ? className + ' ' : '') + 'staggered-menu-wrapper relative w-full h-full z-[60]'}
+        className={(className ? className + ' ' : '') + 'staggered-menu-wrapper relative w-full h-full overflow-hidden z-[60]'}
         style={accentColor ? ({ ['--sm-accent' as any]: accentColor } as React.CSSProperties) : undefined}
         data-position={position}
         data-open={open || undefined}
@@ -565,7 +588,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       </div>
 
       <style>{`
-.sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 60; pointer-events: none; }
+.sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 60; pointer-events: none; overflow: hidden; }
 .sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 2em; background: transparent; z-index: 20; pointer-events: auto; }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }

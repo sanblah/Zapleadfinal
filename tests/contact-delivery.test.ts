@@ -31,6 +31,60 @@ test("deliverContactSubmission rejects production submissions when no delivery c
   );
 });
 
+test("deliverContactSubmission sends SMTP email when SMTP is configured", async () => {
+  let capturedMessage:
+    | {
+        from: string;
+        to: string;
+        replyTo: string;
+        subject: string;
+        text: string;
+        html: string;
+      }
+    | undefined;
+
+  await deliverContactSubmission(submission, {
+    nodeEnv: "production",
+    smtpHost: "smtp.example.com",
+    smtpPort: 465,
+    smtpSecure: true,
+    smtpUser: "smtp-user",
+    smtpPass: "smtp-pass",
+    fromEmail: "forms@zaplead.in",
+    toEmail: "sanchit@zaplead.in",
+    transportFactory: () =>
+      ({
+        sendMail: async (message: unknown) => {
+          const typedMessage = message as {
+            from?: unknown;
+            to?: unknown;
+            replyTo?: unknown;
+            subject?: unknown;
+            text?: unknown;
+            html?: unknown;
+          };
+
+          capturedMessage = {
+            from: String(typedMessage.from),
+            to: String(typedMessage.to),
+            replyTo: String(typedMessage.replyTo),
+            subject: String(typedMessage.subject),
+            text: String(typedMessage.text),
+            html: String(typedMessage.html),
+          };
+        },
+      }) as never,
+  });
+
+  assert.ok(capturedMessage);
+  assert.equal(capturedMessage.from, "forms@zaplead.in");
+  assert.equal(capturedMessage.to, "sanchit@zaplead.in");
+  assert.equal(capturedMessage.replyTo, submission.email);
+  assert.match(capturedMessage.subject, /Ada Lovelace/);
+  assert.match(capturedMessage.text, /Analytical Engines/);
+  assert.match(capturedMessage.html, /Need instant lead qualification/);
+});
+
 test("deliverContactSubmission posts JSON to the configured webhook", async () => {
   let capturedRequest: Request | undefined;
 

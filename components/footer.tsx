@@ -174,10 +174,10 @@ export function Footer() {
               <ul className="space-y-3 text-base">
                 <li>
                   <a
-                    href="mailto:aizaplead@gmail.com"
+                    href="mailto:sanchit@zaplead.in"
                     className="text-white/80 font-light transition-colors duration-200 hover:text-white"
                   >
-                    aizaplead@gmail.com
+                    sanchit@zaplead.in
                   </a>
                 </li>
                 <li>
@@ -320,7 +320,7 @@ export function Footer() {
               </a>
 
               <a
-                href="mailto:aizaplead@gmail.com"
+                href="mailto:sanchit@zaplead.in"
                 className="pointer-events-auto text-white/50 transition-colors duration-200 hover:text-white"
                 aria-label="Email"
               >

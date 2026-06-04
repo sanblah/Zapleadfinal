@@ -43,10 +43,10 @@ export function ContactForm() {
         <p className="text-sm text-white/70">
           Questions? Email{" "}
           <a
-            href="mailto:aizaplead@gmail.com"
+            href="mailto:sanchit@zaplead.in"
             className="text-white transition-colors hover:text-white/80"
           >
-            aizaplead@gmail.com
+            sanchit@zaplead.in
           </a>
         </p>
       </div>

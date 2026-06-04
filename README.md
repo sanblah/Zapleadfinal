@@ -209,12 +209,19 @@ The contact form uses Next.js Server Actions for submission without external ser
 
 ### Production Setup
 
-To connect the form to your CRM or email service, edit `app/contact/actions.ts`:
+The contact form can send submissions directly by email over SMTP. Set these env vars:
 
-```typescript
-// Add your CRM API call here
-// Examples: HubSpot, Salesforce, Pipedrive, Google Sheets
+```bash
+SMTP_HOST=
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=
+SMTP_PASS=
+CONTACT_FROM_EMAIL=
+CONTACT_TO_EMAIL=sanchit@zaplead.in
 ```
+
+`CONTACT_TO_EMAIL` defaults to `sanchit@zaplead.in` if omitted. `CONTACT_WEBHOOK_URL` can still be used as a fallback if you prefer a webhook flow.
 
 ## Integrations Placeholder
 

@@ -120,6 +120,15 @@ export async function submitContactForm(
       {
         nodeEnv: process.env.NODE_ENV,
         webhookUrl: process.env.CONTACT_WEBHOOK_URL,
+        smtpHost: process.env.SMTP_HOST,
+        smtpPort: process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined,
+        smtpSecure: process.env.SMTP_SECURE
+          ? process.env.SMTP_SECURE === "true"
+          : undefined,
+        smtpUser: process.env.SMTP_USER,
+        smtpPass: process.env.SMTP_PASS,
+        fromEmail: process.env.CONTACT_FROM_EMAIL,
+        toEmail: process.env.CONTACT_TO_EMAIL,
       }
     );
 
@@ -138,23 +147,23 @@ export async function submitContactForm(
       error instanceof ContactDeliveryError &&
       error.code === "missing_configuration"
     ) {
-      console.error("Contact form misconfiguration", {
-        error: error.message,
-      });
+        console.error("Contact form misconfiguration", {
+          error: error.message,
+        });
       return {
         success: false,
         message:
-          "Contact delivery is not configured yet. Please email us at aizaplead@gmail.com for now.",
+          "Contact delivery is not configured yet. Please email us at sanchit@zaplead.in for now.",
       };
     }
 
     console.error("Form submission error", {
       error: error instanceof Error ? error.message : "Unknown error",
     });
-    return {
-      success: false,
-      message:
-        "Something went wrong. Please try again or email us at aizaplead@gmail.com",
-    };
+      return {
+        success: false,
+        message:
+        "Something went wrong. Please try again or email us at sanchit@zaplead.in",
+      };
   }
 }

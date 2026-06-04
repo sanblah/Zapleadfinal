@@ -54,7 +54,7 @@ export default function ContactPage() {
               <p className="mb-3 text-base font-medium text-white">Or reach us directly</p>
               <div className="space-y-2">
                 <p className="text-base text-white/80 font-light">
-                  Email: <a href="mailto:aizaplead@gmail.com" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">aizaplead@gmail.com</a>
+                  Email: <a href="mailto:sanchit@zaplead.in" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">sanchit@zaplead.in</a>
                 </p>
                 <p className="text-base text-white/80 font-light">
                   WhatsApp: <a href="https://wa.me/918657532671" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">+91 86575 32671</a>

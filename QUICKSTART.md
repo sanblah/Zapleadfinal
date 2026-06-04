@@ -53,7 +53,7 @@ npm start
 ## Next Steps
 
 1. **Add images:** Place in `/public` and reference with Next.js Image component
-2. **Connect contact form:** Edit `app/contact/actions.ts` to send to your CRM
+2. **Connect contact form:** Set SMTP env vars so form submissions are emailed to `sanchit@zaplead.in`
 3. **Customize copy:** Update content in page files
 4. **Deploy:** Push to Vercel or your preferred host
 

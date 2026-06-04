@@ -1,3 +1,5 @@
+import nodemailer from "nodemailer";
+
 export type ContactSubmission = {
   name: string;
   email: string;
@@ -14,6 +16,14 @@ type DeliverContactSubmissionOptions = {
   webhookUrl?: string;
   fetchImpl?: typeof fetch;
   timeoutMs?: number;
+  smtpHost?: string;
+  smtpPort?: number;
+  smtpSecure?: boolean;
+  smtpUser?: string;
+  smtpPass?: string;
+  fromEmail?: string;
+  toEmail?: string;
+  transportFactory?: typeof nodemailer.createTransport;
 };
 
 export class ContactDeliveryError extends Error {
@@ -30,6 +40,64 @@ export class ContactDeliveryError extends Error {
 }
 
 const DEFAULT_TIMEOUT_MS = 10_000;
+const DEFAULT_CONTACT_RECIPIENT = "sanchit@zaplead.in";
+
+function isSmtpConfigured(options: DeliverContactSubmissionOptions): boolean {
+  return Boolean(
+    options.smtpHost &&
+    options.smtpUser &&
+    options.smtpPass &&
+    options.fromEmail
+  );
+}
+
+function formatSubmissionText(submission: ContactSubmission): string {
+  return [
+    "New ZapLead contact submission",
+    "",
+    `Name: ${submission.name}`,
+    `Email: ${submission.email}`,
+    `Company: ${submission.company}`,
+    `Industry: ${submission.industry}`,
+    `Current tools: ${submission.currentTools || "Not provided"}`,
+    `Lead headache: ${submission.details || "Not provided"}`,
+    `Submitted at: ${submission.submittedAt}`,
+    `Email domain: ${submission.emailDomain}`,
+  ].join("\n");
+}
+
+function formatSubmissionHtml(submission: ContactSubmission): string {
+  const rows = [
+    ["Name", submission.name],
+    ["Email", submission.email],
+    ["Company", submission.company],
+    ["Industry", submission.industry],
+    ["Current tools", submission.currentTools || "Not provided"],
+    ["Lead headache", submission.details || "Not provided"],
+    ["Submitted at", submission.submittedAt],
+    ["Email domain", submission.emailDomain],
+  ];
+
+  return `
+    <div style="font-family: Arial, sans-serif; color: #111827; line-height: 1.6;">
+      <h2 style="margin-bottom: 16px;">New ZapLead contact submission</h2>
+      <table style="border-collapse: collapse; width: 100%; max-width: 720px;">
+        <tbody>
+          ${rows
+            .map(
+              ([label, value]) => `
+                <tr>
+                  <td style="padding: 10px 12px; border: 1px solid #e5e7eb; font-weight: 600; width: 180px; vertical-align: top;">${label}</td>
+                  <td style="padding: 10px 12px; border: 1px solid #e5e7eb; white-space: pre-wrap;">${value}</td>
+                </tr>
+              `
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
 export async function deliverContactSubmission(
   submission: ContactSubmission,
@@ -40,13 +108,44 @@ export async function deliverContactSubmission(
     webhookUrl,
     fetchImpl = fetch,
     timeoutMs = DEFAULT_TIMEOUT_MS,
+    smtpHost,
+    smtpPort = 465,
+    smtpSecure = smtpPort === 465,
+    smtpUser,
+    smtpPass,
+    fromEmail,
+    toEmail = DEFAULT_CONTACT_RECIPIENT,
+    transportFactory = nodemailer.createTransport,
   } = options;
+
+  if (isSmtpConfigured({ smtpHost, smtpUser, smtpPass, fromEmail })) {
+    const transport = transportFactory({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+    });
+
+    await transport.sendMail({
+      from: fromEmail,
+      to: toEmail,
+      replyTo: submission.email,
+      subject: `New ZapLead contact: ${submission.name} from ${submission.company}`,
+      text: formatSubmissionText(submission),
+      html: formatSubmissionHtml(submission),
+    });
+
+    return;
+  }
 
   if (!webhookUrl) {
     if (nodeEnv === "production") {
       throw new ContactDeliveryError(
         "missing_configuration",
-        "Missing CONTACT_WEBHOOK_URL."
+        "Missing SMTP configuration and CONTACT_WEBHOOK_URL."
       );
     }
     return;
