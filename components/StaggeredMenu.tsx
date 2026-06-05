@@ -608,10 +608,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope [data-position='left'] .staggered-menu-panel { right: auto; left: 0; }
 .sm-scope .sm-prelayers { position: absolute; top: 0; right: 0; bottom: 0; width: clamp(260px, 38vw, 420px); pointer-events: none; z-index: 5; }
 .sm-scope [data-position='left'] .sm-prelayers { right: auto; left: 0; }
-.sm-scope .staggered-menu-wrapper:not([data-open]) .staggered-menu-panel,
-.sm-scope .staggered-menu-wrapper:not([data-open]) .sm-prelayer { transform: translateX(100%); }
-.sm-scope .staggered-menu-wrapper:not([data-open])[data-position='left'] .staggered-menu-panel,
-.sm-scope .staggered-menu-wrapper:not([data-open])[data-position='left'] .sm-prelayer { transform: translateX(-100%); }
 .sm-scope .staggered-menu-wrapper[data-open] .staggered-menu-panel,
 .sm-scope .staggered-menu-wrapper[data-open] .sm-prelayers { pointer-events: auto; }
 .sm-scope .sm-prelayer { position: absolute; top: 0; right: 0; height: 100%; width: 100%; transform: translateX(0); }
