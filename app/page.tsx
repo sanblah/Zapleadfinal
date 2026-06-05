@@ -26,13 +26,13 @@ const selectedWork = [
     result: "20,123 messages • 1,248 active customers • 87 completed paid orders across 2 months",
   },
   {
-    href: "/work#zapreach-os-whatsapp-agent-platform",
-    title: "ZapReach OS",
-    meta: "Multi-tenant WhatsApp agent platform",
-    tags: ["Agent Platform", "Tenant Runtime", "Encrypted Integrations"],
+    href: "/work#ssa-project-apollo-ringg-pipeline",
+    title: "SSA Project",
+    meta: "Apollo to Ringg outbound automation",
+    tags: ["Apollo", "Ringg AI", "Supabase"],
     description:
-      "The reusable operating layer for launching business-specific WhatsApp agents from menus, brochures, integrations, and tenant-safe runtime configuration.",
-    result: "5-step onboarding • multi-tenant runtime • usage and billing telemetry",
+      "A cron-driven lead pipeline that pulls Apollo saved lists, deduplicates against Supabase, builds Ringg-ready CSV batches, and starts outbound AI-calling campaigns automatically.",
+    result: "Apollo pull • dedup + CSV transform • Ringg campaign start + run logs",
   },
   {
     href: "/work#marathon-realty-automation",
