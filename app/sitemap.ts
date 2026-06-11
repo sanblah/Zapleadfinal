@@ -1,13 +1,19 @@
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://zaplead.in";
-  const routes = ["", "/contact", "/work"];
+  const lastModified = new Date("2026-06-11");
+  const routes = [
+    { path: "", priority: 1, changeFrequency: "weekly" as const },
+    { path: "/ai-lead-automation", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/work", priority: 0.85, changeFrequency: "monthly" as const },
+    { path: "/contact", priority: 0.75, changeFrequency: "monthly" as const },
+  ];
 
   return routes.map((route) => ({
-    url: `${siteUrl}${route}`,
-    changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.8,
-    lastModified: new Date(),
+    url: `${siteConfig.siteUrl}${route.path}`,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+    lastModified,
   }));
 }

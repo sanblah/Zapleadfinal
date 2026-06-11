@@ -160,6 +160,11 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/ai-lead-automation" className="text-white/80 font-light transition-colors duration-200 hover:text-white">
+                    AI Lead Automation
+                  </Link>
+                </li>
+                <li>
                   <Link href="/contact" className="text-white/80 font-light transition-colors duration-200 hover:text-white">
                     Contact
                   </Link>

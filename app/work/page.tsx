@@ -2,11 +2,22 @@ import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import { absoluteUrl, createBreadcrumbJsonLd, siteConfig } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "ZapLead Case Studies",
   description:
-    "See how ZapLead builds production WhatsApp agents, automation systems, and reusable AI operating layers.",
+    "See ZapLead case studies for WhatsApp AI agents, outbound AI calling operations, CRM automation, and real estate pre-sales workflows.",
+  alternates: {
+    canonical: "/work",
+  },
+  openGraph: {
+    title: "ZapLead Case Studies",
+    description:
+      "Production examples of WhatsApp AI agents, outbound AI calling operations, CRM automation, and real estate pre-sales workflows.",
+    url: "/work",
+    type: "website",
+  },
 };
 
 interface CaseStudy {
@@ -135,9 +146,41 @@ const caseStudies: CaseStudy[] = [
   },
 ];
 
+const workPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${absoluteUrl("/work")}#webpage`,
+  url: absoluteUrl("/work"),
+  name: "ZapLead Case Studies",
+  description: metadata.description,
+  publisher: {
+    "@id": `${siteConfig.siteUrl}/#organization`,
+  },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: caseStudies.map((caseStudy, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: absoluteUrl(`/work#${caseStudy.id}`),
+      name: caseStudy.company,
+    })),
+  },
+};
+
 export default function WorkPage() {
   return (
     <>
+      {[workPageJsonLd, createBreadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Case Studies", path: "/work" },
+      ])].map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
       {/* JSON-LD for each case study */}
       {caseStudies.map((caseStudy) => (
         <script

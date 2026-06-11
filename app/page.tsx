@@ -14,6 +14,7 @@ import ZapleadSolution from "@/components/infographics/ZapleadSolution";
 import AIPlayground from "@/components/interactive/AIPlayground";
 import LogosMarquee from "@/components/LogosMarquee";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import { createFaqJsonLd, homeFaqs } from "@/lib/seo";
 
 const selectedWork = [
   {
@@ -45,9 +46,30 @@ const selectedWork = [
   },
 ];
 
+const leadAutomationFacts = [
+  {
+    title: "ZapLead builds AI lead engagement systems.",
+    body: "The system captures inquiries, asks qualification questions, updates CRM records, and routes sales-ready leads.",
+  },
+  {
+    title: "ZapLead connects WhatsApp, web forms, DMs, CRM, and calendars.",
+    body: "Every lead keeps its source, conversation context, next step, and owner in one pipeline.",
+  },
+  {
+    title: "ZapLead helps teams reduce manual follow-up gaps.",
+    body: "AI agents handle repeated questions and reminders while humans take over the conversations that need judgment.",
+  },
+];
+
+const homeFaqJsonLd = createFaqJsonLd(homeFaqs);
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
+      />
 
       {/* Gradient Animation Background - Fixed to cover entire viewport */}
       <div className="fixed inset-0 z-0">
@@ -81,29 +103,23 @@ export default function HomePage() {
                 className="mb-8 glass-badge text-white px-6 py-2.5 text-sm font-medium"
               >
                 <Sparkles className="h-4 w-4 mr-2 text-yellow-400 animate-pulse" />
-                Lead Response in 5 Seconds, Not 5 Hours
+                AI lead pipeline automation for WhatsApp + web
               </Badge>
             </AnimatedContent>
 
             <AnimatedContent delay={0.15} duration={1}>
-              <h1 className="mb-4 sm:mb-6 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-[#fde8d8]"
+              <h1 className="mb-6 sm:mb-8 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-[#fde8d8]"
                 style={{ textShadow: "0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(82,39,255,0.2)" }}
               >
-                Your Leads Deserve
-              </h1>
-            </AnimatedContent>
-
-            <AnimatedContent delay={0.3} duration={1}>
-              <h1 className="mb-6 sm:mb-8 text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.15] pb-1 text-[#fde8d8] italic"
-                style={{ textShadow: "0 0 60px rgba(255,255,255,0.3), 0 0 120px rgba(82,39,255,0.2)" }}
-              >
-                Instant Responses
+                AI Lead Pipeline Automation
+                <span className="block italic">For Instant Responses</span>
               </h1>
             </AnimatedContent>
 
             <AnimatedContent delay={0.45} duration={0.8} distance={30}>
               <p className="mb-8 sm:mb-12 text-base sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
-                An agentic AI approach to leads.
+                ZapLead builds AI agents and workflow systems that capture,
+                qualify, route, follow up with, and book high-intent leads.
               </p>
             </AnimatedContent>
 
@@ -126,7 +142,7 @@ export default function HomePage() {
                   className="text-white px-8 sm:px-10 py-5 sm:py-6 text-lg sm:text-xl rounded-full w-full sm:w-auto"
                 >
                   <Link href="/work" className="w-full sm:w-auto">
-                    Read 2 min demo
+                    View Case Studies
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -142,7 +158,7 @@ export default function HomePage() {
               <div className="mb-16 text-center">
                 <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
                   <DecryptedText
-                    text="Every Hour, You're Losing ₹12,500"
+                    text="Lead Pipelines Break When Follow-Up Is Slow"
                     animateOn="view"
                     sequential={true}
                     revealDirection="start"
@@ -152,7 +168,8 @@ export default function HomePage() {
                   />
                 </h2>
                 <p className="text-xl sm:text-2xl text-white/70 max-w-2xl mx-auto">
-                  65% of your leads go cold before your team replies. That&apos;s not a sales problem—it&apos;s a speed problem.
+                  ZapLead keeps lead context, qualification, routing, and booking
+                  connected so sales teams do not rebuild the same information manually.
                 </p>
               </div>
 
@@ -200,6 +217,63 @@ export default function HomePage() {
 
         {/* Logos Marquee Section */}
         <LogosMarquee />
+
+        {/* AI Lead Automation Facts */}
+        <section className="pt-14 pb-10 sm:pt-20 sm:pb-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <ScrollBlurReveal>
+              <div className="mb-12 text-center">
+                <AnimatedContent delay={0} duration={0.8}>
+                  <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
+                    <DecryptedText
+                      text="What ZapLead Does"
+                      animateOn="view"
+                      sequential={true}
+                      revealDirection="start"
+                      speed={80}
+                      className="text-white"
+                      encryptedClassName="text-white/40"
+                    />
+                  </h2>
+                </AnimatedContent>
+                <AnimatedContent delay={0.2} duration={0.8}>
+                  <p className="mx-auto max-w-3xl text-lg sm:text-xl text-white/70 font-light">
+                    ZapLead builds AI lead pipeline automation for teams that need
+                    faster response, cleaner qualification, and better sales handoff.
+                  </p>
+                </AnimatedContent>
+              </div>
+            </ScrollBlurReveal>
+
+            <ScrollBlurReveal>
+              <div className="grid gap-6 md:grid-cols-3">
+                {leadAutomationFacts.map((fact, index) => (
+                  <AnimatedContent key={fact.title} delay={index * 0.15} duration={0.8} distance={40}>
+                    <Card className="glass-card liquid-shine h-full transform-gpu">
+                      <CardHeader>
+                        <CardTitle className="text-xl text-white">{fact.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-base leading-relaxed text-white/75 font-light">
+                          {fact.body}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </AnimatedContent>
+                ))}
+              </div>
+
+              <div className="mt-8 text-center">
+                <Link
+                  href="/ai-lead-automation"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-white transition-all hover:gap-3"
+                >
+                  Read the AI lead automation guide <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
+            </ScrollBlurReveal>
+          </div>
+        </section>
 
         {/* How It Works Section */}
         <section className="pt-14 pb-10 sm:pt-24 sm:pb-14">
@@ -407,6 +481,46 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="pt-10 pb-16 sm:pt-14 sm:pb-20">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <ScrollBlurReveal>
+              <div className="mb-12 text-center">
+                <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-[#fde8d8]">
+                  <DecryptedText
+                    text="AI Lead Automation FAQ"
+                    animateOn="view"
+                    sequential={true}
+                    revealDirection="start"
+                    speed={80}
+                    className="text-white"
+                    encryptedClassName="text-white/40"
+                  />
+                </h2>
+                <p className="mx-auto max-w-2xl text-lg text-white/70 font-light">
+                  Direct answers about ZapLead, WhatsApp AI agents, CRM automation,
+                  and sales pipeline handoff.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {homeFaqs.map((item) => (
+                  <Card key={item.question} className="glass-card liquid-shine">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-xl text-white">{item.question}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-base leading-relaxed text-white/75 font-light">
+                        {item.answer}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </ScrollBlurReveal>
+          </div>
+        </section>
+
         {/* Why ZapLead Section */}
         <section className="py-16 sm:py-24 pb-20 sm:pb-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -465,7 +579,7 @@ export default function HomePage() {
               <AnimatedContent delay={0.6} duration={0.8}>
                 <div className="text-center">
                   <h3 className="mb-6 text-2xl sm:text-3xl font-bold text-[#fde8d8]">
-                    Ready to 3x Your Bookings?
+                    Ready to Find the Gaps in Your Pipeline?
                   </h3>
                   <Button asChild size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-105 px-10 py-6 text-xl shadow-2xl rounded-full transition-all duration-300">
                     <Link href="/contact">

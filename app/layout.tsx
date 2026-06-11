@@ -4,9 +4,15 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { StaggeredMenu } from "@/components/StaggeredMenu";
 import { Footer } from "@/components/footer";
-import { Sparkles } from "lucide-react";
 import SmoothScroll from "@/components/SmoothScroll";
 import MobileActions from "@/components/MobileActions";
+import {
+  organizationJsonLd,
+  seoKeywords,
+  serviceJsonLd,
+  siteConfig,
+  websiteJsonLd,
+} from "@/lib/seo";
 
 // DM Sans — geometric sans-serif with consistent stroke weight
 const dmSans = DM_Sans({
@@ -17,20 +23,58 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://zaplead.in"),
-  title: "ZapLead - AI Lead Pipeline Automation",
-  description: "Turn leads into revenue with AI agents that capture, qualify, and book meetings 24/7. 92% conversion rate.",
+  metadataBase: new URL(siteConfig.siteUrl),
+  applicationName: siteConfig.name,
+  title: {
+    default: "AI Lead Pipeline Automation | ZapLead",
+    template: "%s | ZapLead",
+  },
+  description: siteConfig.description,
+  keywords: seoKeywords,
+  authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "AI lead pipeline automation",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: "/Zapleadlogo.png",
     shortcut: "/Zapleadlogo.png",
     apple: "/Zapleadlogo.png",
   },
   openGraph: {
-    title: "ZapLead - AI Lead Pipeline Automation",
-    description: "Turn leads into revenue with AI agents that capture, qualify, and book meetings 24/7.",
+    title: "AI Lead Pipeline Automation | ZapLead",
+    description: siteConfig.description,
+    url: "/",
     type: "website",
     locale: "en_US",
-    siteName: "ZapLead",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/Zapleadlogo.png",
+        width: 500,
+        height: 500,
+        alt: "ZapLead logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "AI Lead Pipeline Automation | ZapLead",
+    description: siteConfig.description,
+    images: ["/Zapleadlogo.png"],
   },
 };
 
@@ -45,6 +89,11 @@ o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+
 o.onload=function(){window.trackingFunctions.onLoad({appId:"699f23dd6ef85d00196cec25"})},
 document.head.appendChild(o)}initApollo();`;
 
+const jsonLdGraph = {
+  "@context": "https://schema.org",
+  "@graph": [organizationJsonLd, websiteJsonLd, serviceJsonLd],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,6 +103,10 @@ export default function RootLayout({
     <html lang="en" className={dmSans.variable}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: apolloTrackerScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
+        />
       </head>
       <body className={`${dmSans.variable} antialiased bg-background text-foreground`}>
         <a href="#main-content" className="skip-link">
@@ -70,6 +123,7 @@ export default function RootLayout({
           logoUrl="/Zapleadlogo.png"
           items={[
             { label: 'Home', ariaLabel: 'Go to homepage', link: '/' },
+            { label: 'AI Lead Automation', ariaLabel: 'Learn about AI lead automation', link: '/ai-lead-automation' },
             { label: 'Work', ariaLabel: 'View our work and case studies', link: '/work' },
             { label: 'Contact', ariaLabel: 'Get in touch with us', link: '/contact' },
           ]}

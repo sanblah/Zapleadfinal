@@ -1,16 +1,50 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import { absoluteUrl, createBreadcrumbJsonLd, siteConfig } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact ZapLead",
+  title: "Contact ZapLead for AI Lead Automation",
   description:
-    "Tell ZapLead about your pipeline and get a custom AI lead automation plan.",
+    "Contact ZapLead for an AI lead pipeline audit across WhatsApp, web forms, CRM routing, follow-up, and meeting booking.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact ZapLead for AI Lead Automation",
+    description:
+      "Get an AI lead pipeline audit for WhatsApp, web forms, CRM routing, follow-up, and meeting booking.",
+    url: "/contact",
+    type: "website",
+  },
+};
+
+const contactPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${absoluteUrl("/contact")}#webpage`,
+  url: absoluteUrl("/contact"),
+  name: "Contact ZapLead",
+  description: metadata.description,
+  mainEntity: {
+    "@id": `${siteConfig.siteUrl}/#organization`,
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      {[contactPageJsonLd, createBreadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Contact", path: "/contact" },
+      ])].map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
       {/* Gradient Animation Background - Fixed to cover entire viewport */}
       <div className="fixed inset-0 z-0">
         <BackgroundGradientAnimation

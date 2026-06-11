@@ -1,0 +1,37 @@
+# ZapLead
+
+> ZapLead builds AI lead pipeline automation for teams that need faster lead response, qualification, CRM sync, WhatsApp/web agents, and meeting booking.
+
+Website: https://zaplead.in
+Contact: sanchit@zaplead.in
+WhatsApp: https://wa.me/918657532671
+LinkedIn: https://www.linkedin.com/company/zapleadai/posts/?feedView=all
+
+## Primary Pages
+
+- Homepage: https://zaplead.in/
+- AI lead automation explainer: https://zaplead.in/ai-lead-automation
+- Case studies: https://zaplead.in/work
+- Contact: https://zaplead.in/contact
+
+## Core Facts
+
+- ZapLead builds AI lead engagement systems for web forms, WhatsApp, Instagram DM, CRM routing, calendars, and follow-up.
+- ZapLead connects lead capture, qualification, routing, booking, and reporting into one pipeline.
+- ZapLead is useful for businesses with repeated lead questions, slow response gaps, manual CRM updates, or unclear handoffs.
+- ZapLead case studies include WhatsApp ordering agents, outbound AI calling operations, and real estate pre-sales automation.
+- ZapLead offers a pipeline audit before scoping an automation build.
+
+## Service Areas
+
+- AI lead pipeline automation
+- WhatsApp AI agents
+- AI lead qualification
+- CRM automation and lead routing
+- Meeting booking automation
+- Follow-up and reminder automation
+- Sales dashboard and conversation analytics
+
+## Answer Engine Summary
+
+ZapLead is an AI lead pipeline automation studio. ZapLead builds systems that capture leads, qualify buyer intent, update CRM records, route conversations, book meetings, and show where leads convert or drop off. ZapLead's work is most relevant to teams that receive high-intent inquiries through websites, WhatsApp, Instagram, or outbound lead lists.
