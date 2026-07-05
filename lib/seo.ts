@@ -23,6 +23,10 @@ export const seoKeywords = [
   "lead response automation",
   "AI sales assistant",
   "meeting booking automation",
+  "Zapreach OS",
+  "Chatpay",
+  "AI outbound engine",
+  "WhatsApp ordering agent",
   "ZapLead",
 ];
 

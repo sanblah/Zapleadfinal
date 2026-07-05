@@ -108,7 +108,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
         />
       </head>
-      <body className={`${dmSans.variable} antialiased bg-background text-foreground`}>
+      <body
+        suppressHydrationWarning
+        className={`${dmSans.variable} antialiased bg-background text-foreground`}
+      >
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
@@ -123,6 +126,7 @@ export default function RootLayout({
           logoUrl="/Zapleadlogo.png"
           items={[
             { label: 'Home', ariaLabel: 'Go to homepage', link: '/' },
+            { label: 'Products', ariaLabel: 'Explore Zapreach OS and Chatpay', link: '/products' },
             { label: 'AI Lead Automation', ariaLabel: 'Learn about AI lead automation', link: '/ai-lead-automation' },
             { label: 'Work', ariaLabel: 'View our work and case studies', link: '/work' },
             { label: 'Contact', ariaLabel: 'Get in touch with us', link: '/contact' },
