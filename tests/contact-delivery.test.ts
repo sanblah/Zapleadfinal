@@ -85,6 +85,37 @@ test("deliverContactSubmission sends SMTP email when SMTP is configured", async 
   assert.match(capturedMessage.html, /Need instant lead qualification/);
 });
 
+test("deliverContactSubmission escapes HTML in user-supplied fields", async () => {
+  let capturedHtml = "";
+
+  await deliverContactSubmission(
+    {
+      ...submission,
+      name: '<img src=x onerror=alert(1)>',
+      company: 'Acme "& Sons" <script>alert(2)</script>',
+    },
+    {
+      nodeEnv: "production",
+      smtpHost: "smtp.example.com",
+      smtpUser: "smtp-user",
+      smtpPass: "smtp-pass",
+      fromEmail: "forms@zaplead.in",
+      transportFactory: () =>
+        ({
+          sendMail: async (message: unknown) => {
+            capturedHtml = String((message as { html?: unknown }).html);
+          },
+        }) as never,
+    }
+  );
+
+  assert.ok(capturedHtml);
+  assert.doesNotMatch(capturedHtml, /<img src=x/);
+  assert.doesNotMatch(capturedHtml, /<script>/);
+  assert.match(capturedHtml, /&lt;img src=x onerror=alert\(1\)&gt;/);
+  assert.match(capturedHtml, /Acme &quot;&amp; Sons&quot; &lt;script&gt;/);
+});
+
 test("deliverContactSubmission posts JSON to the configured webhook", async () => {
   let capturedRequest: Request | undefined;
 

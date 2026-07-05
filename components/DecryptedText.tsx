@@ -146,6 +146,10 @@ export default function DecryptedText({
 
   useEffect(() => {
     if (animateOn !== 'view' && animateOn !== 'both') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setHasAnimated(true);
+      return;
+    }
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {

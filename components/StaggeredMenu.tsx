@@ -71,7 +71,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
   const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
-  const busyRef = useRef(false);
 
   const itemEntranceTweenRef = useRef<gsap.core.Tween | null>(null);
 
@@ -229,17 +228,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   }, []);
 
   const playOpen = useCallback(() => {
-    if (busyRef.current) return;
-    busyRef.current = true;
-    const tl = buildOpenTimeline();
-    if (tl) {
-      tl.eventCallback('onComplete', () => {
-        busyRef.current = false;
-      });
-      tl.play(0);
-    } else {
-      busyRef.current = false;
-    }
+    // No busy-gating here: buildOpenTimeline kills any in-flight close tween,
+    // so re-opening mid-close must always start the open animation. Gating on
+    // an "animation busy" flag used to leave the menu stuck closed (state open,
+    // scroll locked, panel offscreen) when toggled quickly.
+    buildOpenTimeline()?.play(0);
   }, [buildOpenTimeline]);
 
   const playClose = useCallback(() => {
@@ -274,8 +267,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         const socialLinks = Array.from(panel.querySelectorAll('.sm-socials-link')) as HTMLElement[];
         if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
         if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
-
-        busyRef.current = false;
       }
     });
   }, [position]);
@@ -471,6 +462,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             <img
               src={logoUrl || '/Zapleadlogo.png'}
               alt="ZapLead"
+              width={500}
+              height={500}
               className="sm-logo-img block w-auto object-contain rounded-lg"
               draggable={false}
             />
@@ -520,8 +513,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         <aside
           id="staggered-menu-panel"
           ref={panelRef}
-          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px]"
-          style={{ WebkitBackdropFilter: 'blur(12px)' }}
+          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10"
           aria-hidden={!open}
           aria-modal="true"
           role="dialog"
@@ -604,7 +596,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform; }
 .sm-scope .sm-icon-line-v { transform: translate(-50%, -50%) rotate(90deg); }
 .sm-scope .sm-line { display: none !important; }
-.sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: white; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6em 2em 2em 2em; overflow-y: auto; z-index: 10; pointer-events: none; }
+.sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: white; display: flex; flex-direction: column; padding: 6em 2em 2em 2em; overflow-y: auto; z-index: 10; pointer-events: none; }
 .sm-scope [data-position='left'] .staggered-menu-panel { right: auto; left: 0; }
 .sm-scope .sm-prelayers { position: absolute; top: 0; right: 0; bottom: 0; width: clamp(260px, 38vw, 420px); pointer-events: none; z-index: 5; }
 .sm-scope [data-position='left'] .sm-prelayers { right: auto; left: 0; }

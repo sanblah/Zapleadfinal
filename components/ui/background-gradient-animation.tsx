@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 
 export const BackgroundGradientAnimation = ({
     gradientBackgroundStart = "rgb(108, 0, 162)",
@@ -52,6 +52,9 @@ export const BackgroundGradientAnimation = ({
 
     const startPointerAnimation = () => {
         if (!interactive) {
+            return;
+        }
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             return;
         }
         if (animationFrameRef.current !== null) {
@@ -109,11 +112,6 @@ export const BackgroundGradientAnimation = ({
         }
     };
 
-    const [isSafari, setIsSafari] = useState(false);
-    useEffect(() => {
-        setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-    }, []);
-
     return (
         <div
             className={cn(
@@ -122,37 +120,17 @@ export const BackgroundGradientAnimation = ({
             )}
             style={gradientVariables}
         >
-            <svg className="hidden">
-                <defs>
-                    <filter id="blurMe">
-                        <feGaussianBlur
-                            in="SourceGraphic"
-                            stdDeviation="10"
-                            result="blur"
-                        />
-                        <feColorMatrix
-                            in="blur"
-                            mode="matrix"
-                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-                            result="goo"
-                        />
-                        <feBlend in="SourceGraphic" in2="goo" />
-                    </filter>
-                </defs>
-            </svg>
             <div className={cn("", className)}>{children}</div>
-            <div
-                className={cn(
-                    "gradients-container h-full w-full blur-lg",
-                    isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
-                )}
-            >
+            {/* Plain CSS blur only: the previous SVG goo filter (feGaussianBlur +
+                feColorMatrix) re-rasterized the full-screen layer every frame and
+                was the site's main scroll-jank source. */}
+            <div className="gradients-container h-full w-full blur-2xl">
                 <div
                     className={cn(
                         `absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0,_var(--first-color)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
                         `[transform-origin:center_center] will-change-transform`,
-                        `animate-first`,
+                        `animate-first motion-reduce:animate-none`,
                         `opacity-100`
                     )}
                 ></div>
@@ -161,7 +139,7 @@ export const BackgroundGradientAnimation = ({
                         `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
                         `[transform-origin:calc(50%-400px)] will-change-transform`,
-                        `animate-second`,
+                        `animate-second motion-reduce:animate-none`,
                         `opacity-100`
                     )}
                 ></div>
@@ -170,7 +148,7 @@ export const BackgroundGradientAnimation = ({
                         `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
                         `[transform-origin:calc(50%+400px)] will-change-transform`,
-                        `animate-third`,
+                        `animate-third motion-reduce:animate-none`,
                         `opacity-100`
                     )}
                 ></div>
@@ -179,7 +157,7 @@ export const BackgroundGradientAnimation = ({
                         `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
                         `[transform-origin:calc(50%-200px)] will-change-transform`,
-                        `animate-fourth`,
+                        `animate-fourth motion-reduce:animate-none`,
                         `opacity-70`
                     )}
                 ></div>
@@ -188,7 +166,7 @@ export const BackgroundGradientAnimation = ({
                         `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
                         `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
                         `[transform-origin:calc(50%-800px)_calc(50%+800px)] will-change-transform`,
-                        `animate-fifth`,
+                        `animate-fifth motion-reduce:animate-none`,
                         `opacity-100`
                     )}
                 ></div>

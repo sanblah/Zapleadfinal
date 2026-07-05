@@ -68,22 +68,30 @@ export function isCrossSiteBrowserRequest(headers: HeaderReader): boolean {
   return secFetchSite === "cross-site";
 }
 
-export function getClientIp(headers: HeaderReader): string {
-  const platformHeaders = [
-    headers.get("cf-connecting-ip"),
-    headers.get("x-vercel-forwarded-for"),
-    headers.get("x-forwarded-for"),
-  ];
+const MAX_IP_LENGTH = 45; // Longest textual IPv6 form.
 
-  const forwarded = platformHeaders.find(Boolean);
+function normalizeIpCandidate(value: string | null | undefined): string | null {
+  const trimmed = value?.trim();
+  if (!trimmed || trimmed.length > MAX_IP_LENGTH) {
+    return null;
+  }
+  return trimmed;
+}
+
+export function getClientIp(headers: HeaderReader): string {
+  // Take the RIGHTMOST x-forwarded-for entry: it is appended by the closest
+  // trusted proxy (Render), while leftmost entries are client-supplied and
+  // spoofable, which would let callers rotate rate-limit buckets at will.
+  const forwarded = headers.get("x-forwarded-for");
   if (forwarded) {
-    const ip = forwarded.split(",")[0]?.trim();
+    const parts = forwarded.split(",");
+    const ip = normalizeIpCandidate(parts[parts.length - 1]);
     if (ip) {
       return ip;
     }
   }
 
-  const realIp = headers.get("x-real-ip")?.trim();
+  const realIp = normalizeIpCandidate(headers.get("x-real-ip"));
   if (realIp) {
     return realIp;
   }
