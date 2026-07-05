@@ -42,6 +42,18 @@ export class ContactDeliveryError extends Error {
 const DEFAULT_TIMEOUT_MS = 10_000;
 const DEFAULT_CONTACT_RECIPIENT = "sanchit@zaplead.in";
 
+const HTML_ESCAPES: Record<string, string> = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+};
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
+}
+
 function isSmtpConfigured(options: DeliverContactSubmissionOptions): boolean {
   return Boolean(
     options.smtpHost &&
@@ -87,8 +99,8 @@ function formatSubmissionHtml(submission: ContactSubmission): string {
             .map(
               ([label, value]) => `
                 <tr>
-                  <td style="padding: 10px 12px; border: 1px solid #e5e7eb; font-weight: 600; width: 180px; vertical-align: top;">${label}</td>
-                  <td style="padding: 10px 12px; border: 1px solid #e5e7eb; white-space: pre-wrap;">${value}</td>
+                  <td style="padding: 10px 12px; border: 1px solid #e5e7eb; font-weight: 600; width: 180px; vertical-align: top;">${escapeHtml(label)}</td>
+                  <td style="padding: 10px 12px; border: 1px solid #e5e7eb; white-space: pre-wrap;">${escapeHtml(value)}</td>
                 </tr>
               `
             )

@@ -10,6 +10,7 @@ LinkedIn: https://www.linkedin.com/company/zapleadai/posts/?feedView=all
 ## Primary Pages
 
 - Homepage: https://zaplead.in/
+- Products (Zapreach OS and Chatpay): https://zaplead.in/products
 - AI lead automation explainer: https://zaplead.in/ai-lead-automation
 - Case studies: https://zaplead.in/work
 - Contact: https://zaplead.in/contact
