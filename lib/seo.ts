@@ -1,3 +1,5 @@
+import { officialPhoneHref, whatsappFunnelHref } from "@/lib/contact";
+
 export type FaqItem = {
   question: string;
   answer: string;
@@ -9,8 +11,8 @@ export const siteConfig = {
   description:
     "ZapLead builds AI lead pipeline automation for WhatsApp, web forms, CRM routing, follow-up, and meeting booking.",
   email: "sanchit@zaplead.in",
-  phone: "+918657532671",
-  whatsApp: "https://wa.me/918657532671",
+  phone: officialPhoneHref.replace("tel:", ""),
+  whatsApp: whatsappFunnelHref,
   instagram: "https://instagram.com/zapleadin",
   linkedIn: "https://www.linkedin.com/company/zapleadai/posts/?feedView=all",
 };

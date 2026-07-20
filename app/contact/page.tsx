@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import { officialPhoneDisplay, whatsappFunnelHref } from "@/lib/contact";
 import { absoluteUrl, createBreadcrumbJsonLd, siteConfig } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -91,7 +92,7 @@ export default function ContactPage() {
                   Email: <a href="mailto:sanchit@zaplead.in" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">sanchit@zaplead.in</a>
                 </p>
                 <p className="text-base text-white/80 font-light">
-                  WhatsApp: <a href="https://wa.me/918657532671" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">+91 86575 32671</a>
+                  WhatsApp: <a href={whatsappFunnelHref} className="text-white hover:text-white/80 transition-colors underline underline-offset-2">{officialPhoneDisplay}</a>
                 </p>
                 <p className="text-base text-white/80 font-light">
                   Instagram: <a href="https://instagram.com/zapleadin" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors underline underline-offset-2">@zapleadin</a>

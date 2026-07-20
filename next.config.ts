@@ -2,6 +2,22 @@ import type { NextConfig } from "next";
 
 const isProduction = process.env.NODE_ENV === "production";
 
+function buildWhatsAppFunnelUrl() {
+  const explicitFunnelUrl = process.env.NEXT_PUBLIC_WHATSAPP_FUNNEL_URL?.trim();
+  if (explicitFunnelUrl) return explicitFunnelUrl;
+
+  const webhookBaseUrl = process.env.WHATSAPP_WEBHOOK_BASE_URL?.trim();
+  if (!webhookBaseUrl) return "";
+
+  try {
+    return new URL("/qr/main", webhookBaseUrl).toString();
+  } catch {
+    return "";
+  }
+}
+
+const whatsappFunnelUrl = buildWhatsAppFunnelUrl();
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -69,6 +85,9 @@ const securityHeaders: Array<{ key: string; value: string }> = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  env: {
+    NEXT_PUBLIC_WHATSAPP_FUNNEL_URL: whatsappFunnelUrl,
+  },
   async headers() {
     return [
       {

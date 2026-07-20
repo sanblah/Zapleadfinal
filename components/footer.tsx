@@ -4,6 +4,7 @@ import { useRef, useEffect, type MouseEvent as ReactMouseEvent } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { officialPhoneDisplay, officialPhoneHref, whatsappFunnelHref } from "@/lib/contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -192,7 +193,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://wa.me/918657532671"
+                    href={whatsappFunnelHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white/80 font-light transition-colors duration-200 hover:text-white"
@@ -222,10 +223,10 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="tel:+918657532671"
+                    href={officialPhoneHref}
                     className="text-white/80 font-light transition-colors duration-200 hover:text-white"
                   >
-                    +91 86575 32671
+                    {officialPhoneDisplay}
                   </a>
                 </li>
               </ul>
@@ -301,7 +302,7 @@ export function Footer() {
               </a>
 
               <a
-                href="https://wa.me/918657532671"
+                href={whatsappFunnelHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="pointer-events-auto text-white/50 transition-colors duration-200 hover:text-white"
