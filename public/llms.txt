@@ -4,7 +4,7 @@
 
 Website: https://zaplead.in
 Contact: sanchit@zaplead.in
-WhatsApp: https://your-render-backend.onrender.com/qr/main
+WhatsApp: https://zapdash.onrender.com/qr/main
 LinkedIn: https://www.linkedin.com/company/zapleadai/posts/?feedView=all
 
 ## Primary Pages
